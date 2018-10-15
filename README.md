@@ -1,5 +1,7 @@
 # **Sticker-Slab**
 
+## Project Overview
+
 Sticker Slab will be a simplistic static social media site where users will be given a web page where they can upload images, text files or links and it will be displayed with as a  sticker like icon on their webpage. There will be no feed or backlog of user’s activity or posts, so it will be up to the user to manually remove older items they no longer care to link to, so their webpage is only the most relevant items. I also hope to allow the user to have some access to their html file so they can edit the layout and style of their webpage.
 
 
