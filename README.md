@@ -21,6 +21,17 @@ A user profile will be a single webpage with small clickable sticker icons sprea
 
 ## Data Model
 
+**Users-** A model built into the Django library that creates a User object.
+- Username: Must be unique, used in url to load indivdual Sticker Slabs.
+- Email: (Optional), used for changing passwords and claiming accounts.
+- Password: Password used to sign into Sticker Slab account.
+**Stickers-** An clickable icon saved by the user that loads an image, text or a link in display.html.
+- Text: Field to strore text string if it is a text sticker (blank otherwise).
+- Image: Stores the location of a image to be rendered if image sticker (blank otherwise).
+- Link: Stores the url of a website and links to it when sticker clicked (blank otherwise).
+- User: Forign key used to specify which user created the sticker. 
+
+
 ## Schedule
 
 - **October 22, 2018:** Have a Django project set up that allows a user to create and account and navigate through the necessary pages.
