@@ -2,12 +2,12 @@
 
 ## Project Overview
 
-Sticker Slab will be a simplistic static social media site where users will be given a web page where they can upload images, text files or links and it will be displayed with as a  sticker like icon on their webpage. There will be no feed or backlog of user’s activity or posts, so it will be up to the user to manually remove older items they no longer care to link to, so their webpage is only the most relevant items. I also hope to allow the user to have some access to their html file so they can edit the layout and style of their webpage.
+Sticker Slab will be a simplistic static social media site where users will be given a webpage where they can upload images, text files or links and it will be displayed with as a sticker like icon on their webpage. There will be no feed or backlog of user’s posts, so it will be up to the user to manually remove older items to makes sure their webpage only has the most relevent items. I also hope to allow the user to have some access to the html file that renders their Sticker Slab profile so they can edit it's layout and style. 
 
 
 ## Functionality
 
-User profile will be a single webpage with small clickable sticker icons arranged spread across it. Each sticker will correlate to an image, string or link the user has saved as a sticker to their profile. When asticker is clicked it will be rendered on the page “Display” ether as an image, text or in a small web window (if it’s a link). The website will consits of the following pages:
+A user profile will be a single webpage with small clickable sticker icons spread across it. Each sticker will correlate to an image, string or link the user has saved as a sticker to their profile. When a sticker is clicked it will be rendered on the page “Display” ether as an image, text or in a small web window (if it’s a link). The website will consits of the following pages:
 - **Home/Index-** This page will primarily act as a central hub that can link users to the necessary parts of the website depending on their needs. It will contain enough info and graphics to give users a basic idea of the site and will link to more detailed pages with info about the site and managing slabs/profiles.
 - **About-** A more in-depth explanation about the website, info on creating an account and how it could be used.
 - **Register/Sign In-** This page will be used for new users creating accounts and existing users signing into their accounts. Each username must be unique so if the user tries to create username that is already taken it will return an error.
