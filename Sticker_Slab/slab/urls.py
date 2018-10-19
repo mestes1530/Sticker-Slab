@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from django.urls import path
-from Sticker_Slab.slab.migrations import views
+from . import views
 
 app_name = 'slab'
 urlpatterns = [
