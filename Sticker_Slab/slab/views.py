@@ -12,7 +12,7 @@ def signup_user(request):
     create_password = request.POST['create_password']
     user = User.objects.create_user(username=create_username, email=create_email, password=create_password)
     login(request, user)
-    return HttpResponseRedirect(reverse('users:index'))
+    return HttpResponseRedirect(reverse('slab:index'))
 
 def browse(request):
     return render(request, 'browse.html', {})
