@@ -1,5 +1,93 @@
 {% extends 'base.html' %}
-
 {% block content %}
 <h1>Register</h1>
+<div id="main_div">
+    <div id="sign_up">
+        <div class="row">
+        <!--<div class="row">-->
+            <!--<div class="grid-example col s12 m6"><span class="flow-text">Create a Sticker Slab account:</span></div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+            <!--<div class="grid-example col s6 m3"><span class="flow-text">I am half-width on mobile (col s6 m3)</span></div>-->
+            <!--<div class="grid-example col s6 m3"><span class="flow-text">I am half-width on mobile (col s6 m3)</span></div>-->
+        <!--</div>-->
+            <div class="grid-example col s12 m6">
+                <span class="flow-text">
+                    <table>
+                        <thead>
+                        <th><h4>Create An Account:</h4></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><font>Username:</font></td>
+                                <td>
+                                    <div class="input-field col s6">
+                                        <input id="create_username" type="text" class="validate">
+                                        <label for="create_username">Username</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><font>Email:</font></td>
+                                <td>
+                                    <div class="input-field col s6">
+                                        <input id="create_email" type="email" class="validate">
+                                        <label for="create_email">Email</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><font>Password:</font></td>
+                                <td>
+                                    <div class="input-field col s6">
+                                        <input id="create_password" type="password" class="validate">
+                                        <label for="create_password">Password</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
+            </div>
+
+            <div class="grid-example col s12 m6">
+                <span class="flow-text">
+                    <table>
+                        <thead>
+                        <th><h4>Log Into Account:</h4></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><font>Username:</font></td>
+                                <td>
+                                    <div class="input-field col s6">
+                                        <input id="check_username" type="text" class="validate">
+                                        <label for="check_username">Username</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><font>Password:</font></td>
+                                <td>
+                                    <div class="input-field col s6">
+                                        <input id="check_password" type="password" class="validate">
+                                        <label for="check_password">Password</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><font>Forgot Password?</font></td>
+                                <td><a class="waves-effect waves-light btn-large">Button</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span>
+            </div>
+
+
+        </div>
+    </div>
+</div>
 {% endblock %}

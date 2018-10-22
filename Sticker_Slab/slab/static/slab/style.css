@@ -1,0 +1,16 @@
+#main_div {
+    margin: 1%;
+    padding: 1%;
+}
+#sign_up {
+
+}
+.th {
+    text-align: center;
+    text-weight: bold;
+}
+table {
+    width: 40%;
+    padding: 5%;
+    border: 1px solid black;
+}
