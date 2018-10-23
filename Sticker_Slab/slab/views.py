@@ -14,6 +14,20 @@ def signup_user(request):
     login(request, user)
     return HttpResponseRedirect(reverse('slab:index'))
 
+def signin_user(request):
+    print(request.POST)
+    check_username = request.POST['check_username']
+    check_password = request.POST['check_password']
+    user = authenticate(request, username=check_username, password=check_password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse('slab:index'))
+    return HttpResponseRedirect(reverse('slab:register'))
+
+def signout_user(request):
+    logout(request)
+    return render(request, 'index.html', {})
+
 def browse(request):
     return render(request, 'browse.html', {})
 

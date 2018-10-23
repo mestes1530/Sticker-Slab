@@ -23,7 +23,15 @@
                 <li><a href="{% url 'slab:browse' %}">Browse</a></li>
                 <li><a href="{% url 'slab:profile' %}">Profile</a></li>
                 <li><a href="{% url 'slab:help' %}">Help</a></li>
-                <li><a href="{% url 'slab:register' %}">Login</a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'slab:signout_user' %}">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'slab:register' %}">Login</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -33,7 +41,15 @@
         <li><a href="#">Browse</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Help</a></li>
-        <li><a href="#">Login</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'slab:signout_user' %}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'slab:register' %}">Login</a>
+        </li>
+        {% endif %}
     </ul>
     <!-- End of NavBar -->
 {% block content %}
