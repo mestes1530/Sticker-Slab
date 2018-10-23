@@ -24,6 +24,7 @@ class Sticker(models.Model):
     type = models.ForeignKey(StickerType, on_delete=models.PROTECT)
     x = models.IntegerField()
     y = models.IntegerField()
+    text = models.CharField(max_length=500)
 
     def __str__(self):
         return self.name

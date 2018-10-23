@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h1>Profile</h1>
+<h1>{{user.username}}</h1>
+<div id="main_div">
+    <a href="{% url 'slab:add_sticker' %}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</div>
 {% endblock %}

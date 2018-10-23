@@ -2,6 +2,7 @@ from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 def index(request):
     return render(request, 'index.html', {})
@@ -28,12 +29,16 @@ def signout_user(request):
     logout(request)
     return render(request, 'index.html', {})
 
+def add_sticker(request):
+    return render(request, 'add.html', {})
+
 def browse(request):
     return render(request, 'browse.html', {})
 
 def help(request):
     return render(request, 'help.html', {})
 
+@login_required
 def profile(request):
     return render(request, 'profile.html', {})
 
