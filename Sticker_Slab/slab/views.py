@@ -1,4 +1,3 @@
-from .models import Sticker
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -18,13 +17,12 @@ def signup_user(request):
     return HttpResponseRedirect(reverse('slab:index'))
 
 def signin_user(request):
-    print(request.POST)
     check_username = request.POST['check_username']
     check_password = request.POST['check_password']
     user = authenticate(request, username=check_username, password=check_password)
     if user is not None:
         login(request, user)
-        return HttpResponseRedirect(reverse('slab:index'))
+        return HttpResponseRedirect(reverse('slab:profile'))
     return HttpResponseRedirect(reverse('slab:register'))
 
 def signout_user(request):
@@ -32,7 +30,6 @@ def signout_user(request):
     return render(request, 'index.html', {})
 
 def create_slab(request):
-    print(request.POST)
     slab_creator = request.user
     slab_name = request.POST['slab_name']
     slab_privacy = 'private_slab' in request.POST
@@ -40,14 +37,26 @@ def create_slab(request):
     slab.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
-# def add_sticker(request):
-#     return render(request, 'add.html', {})
-#
-# def create_sticker(request):
-#     sticker_name = request.POST['sticker_name']
-#     sticker_type = request.POST['sticker_type']
-#     sticker_text = request.POST['sticker_text']
-#     sticker = Sticker(slab=)
+def show_slab(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    return render(request, 'show_slab.html', {'slab':slab})
+
+def add(request):
+    return render(request, 'add.html', {})
+
+def delete(request):
+    return render(request, 'delete.html', {})
+
+def create_sticker(request):
+    slab_id = request.POST['slab_id']
+    sticker_slab = Slab.objects.get(pk=slab_id)
+    sticker_name = request.POST['sticker_name']
+    x_coordinate = request.POST['x_coordinate']
+    y_coordinate = request.POST['y_coordinate']
+    sticker_text = request.POST['sticker_text']
+    sticker = Sticker(slab=sticker_slab, name=sticker_name, x=x_coordinate, y=y_coordinate, text=sticker_text, link=null, image=null)
+    sticker.save()
+    return HttpResponseRedirect(reverse('slab:profile'))
 
 def browse(request):
     return render(request, 'browse.html', {})
@@ -57,8 +66,6 @@ def help(request):
 
 @login_required
 def profile(request):
-    print(request.user.username)
-    print(len(request.user.slab_set.all()))
     return render(request, 'profile.html', {})
 
 def register(request):

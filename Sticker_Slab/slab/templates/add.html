@@ -5,6 +5,7 @@
         <span class="flow-text">
             <form action="{% url 'slab:create_sticker' %}" method="post">
                 {% csrf_token %}
+                <input type="hidden" value="{{slab.id}}"/>
                 <table>
                     <thead>
                     <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
@@ -37,6 +38,24 @@
                                 <div class="input-field col s6">
                                   <textarea id="sticker_text" name="sticker_text" class="materialize-textarea"></textarea>
                                   <label for="sticker_text">Sticker Content</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font>X Coordinate:</font></td>
+                            <td>
+                                <div class="input-field col s3">
+                                    <input id="x_coordinate" name="x_coordinate" type="text" class="validate">
+                                    <label for="x_coordinate">X Coordinate</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font>Y Coordinate:</font></td>
+                            <td>
+                                <div class="input-field col s3">
+                                    <input id="y_coordinate" name="y_coordinate" type="text" class="validate">
+                                    <label for="y_coordinate">Y Coordinate</label>
                                 </div>
                             </td>
                         </tr>

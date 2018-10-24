@@ -12,6 +12,9 @@ urlpatterns = [
     path('signup_user/', views.signup_user, name='signup_user'),
     path('signin_user/', views.signin_user, name='signin_user'),
     path('signout_user/', views.signout_user, name='signout_user'),
-    # path('add_sticker/', views.add_sticker, name='add_sticker'),
     path('create_slab/', views.create_slab, name='create_slab'),
+    path('show_slab/<int:slab_id>/', views.show_slab, name='show_slab'),
+    path('add/', views.add, name='add'),
+    path('delete/', views.delete, name='delete'),
+    path('create_sticker/', views.create_sticker, name='create_sticker'),
 ]

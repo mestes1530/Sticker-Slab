@@ -16,20 +16,25 @@
     <!-- Start/Left of NavBar -->
     <nav>
         <div class="nav-wrapper">
-            <a href="{% url 'slab:index' %}" class="brand-logo">Sticker Slab</a>
+            <a id="site_name" name="site_name" href="{% url 'slab:index' %}" class="brand-logo">
+                {% load static %}
+                Sticker
+                <img id="logo" src="{% static 'slab/images/logo.png' %}" width="25" height="25" class="d-inline-block align-top" alt="Sticker Slab">
+                Slab
+            </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{% url 'slab:index' %}">Home</a></li>
-                <li><a href="{% url 'slab:browse' %}">Browse</a></li>
-                <li><a href="{% url 'slab:profile' %}">Profile</a></li>
-                <li><a href="{% url 'slab:help' %}">Help</a></li>
+                <li><a href="{% url 'slab:index' %}">🏠Home<i class="material-icons">home</i></a></li>
+                <li><a href="{% url 'slab:browse' %}">🔍Browse<i class="material-icons">search</i></a></li>
+                <li><a href="{% url 'slab:profile' %}">👤Profile<i class="material-icons">person</i></a></li>
+                <li><a href="{% url 'slab:help' %}">ℹ️Info<i class="material-icons">info</i></a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'slab:signout_user' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout<i class="material-icons">lock_outline</i></a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'slab:register' %}">Login</a>
+                    <a class="nav-link" href="{% url 'slab:register' %}">🔓Login<i class="material-icons">lock_open</i></a>
                 </li>
                 {% endif %}
             </ul>
@@ -37,17 +42,17 @@
     </nav>
     <!-- Right Side of NavBar -->
     <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Browse</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Help</a></li>
+        <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
+        <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
+        <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
+        <li><a href="{% url 'slab:help' %}">ℹ️Info</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'slab:signout_user' %}">Logout</a>
+            <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout<i class="material-icons">lock_outline</i></a>
         </li>
         {% else %}
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'slab:register' %}">Login</a>
+            <a class="nav-link" href="{% url 'slab:register' %}">🔓Login<i class="material-icons">lock_open</i></a>
         </li>
         {% endif %}
     </ul>

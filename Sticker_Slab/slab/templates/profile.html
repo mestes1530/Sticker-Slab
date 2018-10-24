@@ -6,10 +6,11 @@
         <ul class="collection with-header">
             <li class="collection-header"><h4>My Slabs:</h4></li>
             {% for slab in user.slab_set.all %}
-            <li class="collection-item"><div><font>{{slab.name}}</font><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            <li class="collection-item"><div><font>{{slab.name}}</font><a href="{% url 'slab:show_slab' slab.id %}" class="secondary-content"><i class="material-icons">send</i></a></div></li>
             {% endfor %}
         </ul>
     </div>
+    <br>
     <div id="new_slab" name="new_slab">
         <span class="flow-text">
             <form action="{% url 'slab:create_slab' %}" method="post">
@@ -47,5 +48,6 @@
             </form>
         </span>
     </div>
+    <br>
 </div>
 {% endblock %}
