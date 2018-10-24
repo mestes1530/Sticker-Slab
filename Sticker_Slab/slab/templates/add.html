@@ -3,39 +3,40 @@
 <div id="main_div">
     <div class="grid-example col s12 m6">
         <span class="flow-text">
-            <form action="{% url 'slab:signup_user' %}" method="post">
+            <form action="{% url 'slab:create_sticker' %}" method="post">
                 {% csrf_token %}
                 <table>
                     <thead>
-                    <th colspan="2"><center><h4>Add A New Sticker:</h4></center></th>
+                    <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
                     </thead>
                     <tbody>
                         <tr>
                             <td><font>Sticker Name:</font></td>
                             <td>
                                 <div class="input-field col s6">
-                                    <input id="create_stickername" name="create_stickername" type="text" class="validate">
-                                    <label for="create_stickername">Sticker Name</label>
+                                    <input id="sticker_name" name="sticker_name" type="text" class="validate">
+                                    <label for="sticker_name">Sticker Name</label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td><font>Sticker Type:</font></td>
                             <td>
-                                <label>Browser Select</label>
-                                <select class="browser-default">
+                                <label>Sticker Type</label>
+                                <select id="sticker_type" name="sticker_type" class="browser-default">
                                     <option value="" disabled selected>Choose Type</option>
-                                    <option value="1">Text Sticker</option>
-                                    <option value="2">Image Sticker</option>
-                                    <option value="3">Link Sticker</option>
+                                    <option value="text">Text Sticker</option>
+                                    <option value="link">Link Sticker</option>
+                                    <option value="image">Image Sticker</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
+                            <td><font>Sticker Content:</font></td>
                             <td colspan="2">
-                                <div class="input-field col s12">
-                                  <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                  <label for="textarea1">Textarea</label>
+                                <div class="input-field col s6">
+                                  <textarea id="sticker_text" name="sticker_text" class="materialize-textarea"></textarea>
+                                  <label for="sticker_text">Sticker Content</label>
                                 </div>
                             </td>
                         </tr>

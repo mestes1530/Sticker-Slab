@@ -2,9 +2,6 @@
     margin: 1%;
     padding: 1%;
 }
-#sign_up {
-
-}
 .th {
     text-align: center;
     text-weight: bold;
@@ -13,4 +10,10 @@ table {
     width: 40%;
     padding: 5%;
     border: 3px solid black;
+}
+#new_slab {
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
 }

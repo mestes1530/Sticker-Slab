@@ -1,8 +1,10 @@
+from .models import Sticker
 from django.shortcuts import render, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from .models import Slab, Sticker
 
 def index(request):
     return render(request, 'index.html', {})
@@ -29,8 +31,23 @@ def signout_user(request):
     logout(request)
     return render(request, 'index.html', {})
 
-def add_sticker(request):
-    return render(request, 'add.html', {})
+def create_slab(request):
+    print(request.POST)
+    slab_creator = request.user
+    slab_name = request.POST['slab_name']
+    slab_privacy = 'private_slab' in request.POST
+    slab = Slab(user=slab_creator, name=slab_name, private=slab_privacy)
+    slab.save()
+    return HttpResponseRedirect(reverse('slab:profile'))
+
+# def add_sticker(request):
+#     return render(request, 'add.html', {})
+#
+# def create_sticker(request):
+#     sticker_name = request.POST['sticker_name']
+#     sticker_type = request.POST['sticker_type']
+#     sticker_text = request.POST['sticker_text']
+#     sticker = Sticker(slab=)
 
 def browse(request):
     return render(request, 'browse.html', {})
@@ -40,6 +57,8 @@ def help(request):
 
 @login_required
 def profile(request):
+    print(request.user.username)
+    print(len(request.user.slab_set.all()))
     return render(request, 'profile.html', {})
 
 def register(request):

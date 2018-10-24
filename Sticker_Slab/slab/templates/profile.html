@@ -1,7 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{user.username}}</h1>
-<div id="main_div">
-    <a href="{% url 'slab:add_sticker' %}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+<div id="main_div"class="grid-example col s12 m6">
+    <h1>{{user.username}}   <a class="btn-floating btn-small waves-effect waves-light"><i class="material-icons">edit</i></a></h1>
+    <div id="my_slabs" name="my_slabs">
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>My Slabs:</h4></li>
+            {% for slab in user.slab_set.all %}
+            <li class="collection-item"><div><font>{{slab.name}}</font><a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="new_slab" name="new_slab">
+        <span class="flow-text">
+            <form action="{% url 'slab:create_slab' %}" method="post">
+                {% csrf_token %}
+                <table>
+                    <thead>
+                    <th colspan="2"><h4>New Slab:</h4></th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><font>Slab Name:</font></td>
+                            <td>
+                                <div class="input-field col s6">
+                                    <input id="slab_name" name="slab_name" type="text" class="validate">
+                                    <label for="slab_name">Slab Name</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><font>Slab Privacy:</font></td>
+                            <td>
+                                <p>
+                                    <label>
+                                        <input name="private_slab" class="with-gap" type="checkbox"/>
+                                        <span>Private</span>
+                                    </label>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan ="2"><center><button class="btn btn-primary" type="submit">Create Slab</button></center></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </span>
+    </div>
 </div>
 {% endblock %}
