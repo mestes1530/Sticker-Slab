@@ -24,17 +24,17 @@
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="{% url 'slab:index' %}">🏠Home<i class="material-icons">home</i></a></li>
-                <li><a href="{% url 'slab:browse' %}">🔍Browse<i class="material-icons">search</i></a></li>
-                <li><a href="{% url 'slab:profile' %}">👤Profile<i class="material-icons">person</i></a></li>
-                <li><a href="{% url 'slab:help' %}">ℹ️Info<i class="material-icons">info</i></a></li>
+                <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
+                <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
+                <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
+                <li><a href="{% url 'slab:help' %}">ℹ️Info</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout<i class="material-icons">lock_outline</i></a>
+                    <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout</a>
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'slab:register' %}">🔓Login<i class="material-icons">lock_open</i></a>
+                    <a class="nav-link" href="{% url 'slab:register' %}">🔓Login</a>
                 </li>
                 {% endif %}
             </ul>
@@ -48,11 +48,11 @@
         <li><a href="{% url 'slab:help' %}">ℹ️Info</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout<i class="material-icons">lock_outline</i></a>
+            <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout</a>
         </li>
         {% else %}
         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'slab:register' %}">🔓Login<i class="material-icons">lock_open</i></a>
+            <a class="nav-link" href="{% url 'slab:register' %}">🔓Login</a>
         </li>
         {% endif %}
     </ul>

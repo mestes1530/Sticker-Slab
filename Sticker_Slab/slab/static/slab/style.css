@@ -1,3 +1,9 @@
+body {
+    background: white url("images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
+}
 #main_div {
     margin: 1%;
     padding: 1%;
@@ -18,10 +24,16 @@ table {
     padding: 5%;
     border: 3px solid black;
 }
+#my_slabs {
+    background-color: black !important;
+    color: DeepSkyBlue;
+}
 #new_slab {
     border-style: solid;
     border-color: LightGray;
     border-width: 1px;
     border-bottom-width: 2px;
     padding: 1%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
 }
