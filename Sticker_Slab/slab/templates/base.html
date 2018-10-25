@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Style.CSS Reference -->
     <link rel="stylesheet" type="text/css" href="{% static 'slab/style.css' %}"/>
+    <!-- Google Fonts CDN -->
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
     <!-- Materialize CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -18,16 +20,14 @@
         <div class="nav-wrapper">
             <a id="site_name" name="site_name" href="{% url 'slab:index' %}" class="brand-logo">
                 {% load static %}
-                Sticker
-                <img id="logo" src="{% static 'slab/images/logo.png' %}" width="25" height="25" class="d-inline-block align-top" alt="Sticker Slab">
-                Slab
+                Sticker <img id="logo" src="{% static 'slab/images/logo.png' %}" width="25" height="25" class="d-inline-block align-top" alt="Sticker Slab"> Slab
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
                 <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
                 <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
-                <li><a href="{% url 'slab:help' %}">ℹ️Info</a></li>
+                <li><a href="{% url 'slab:info' %}">ℹ️Info</a></li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout</a>
@@ -45,7 +45,7 @@
         <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
         <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
         <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
-        <li><a href="{% url 'slab:help' %}">ℹ️Info</a></li>
+        <li><a href="{% url 'slab:info' %}">ℹ️Info</a></li>
         {% if user.is_authenticated %}
         <li class="nav-item active">
             <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout</a>

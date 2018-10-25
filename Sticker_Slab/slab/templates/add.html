@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="main_div">
-    <div class="grid-example col s12 m6">
+<div id="main_div" name="main_div" class="grid-example col s12 m6">
+    <div id="add_sticker_area" name="add_sticker_area">
         <span class="flow-text">
             <form action="{% url 'slab:create_sticker' %}" method="post">
                 {% csrf_token %}
-                <input type="hidden" value="{{slab.id}}"/>
+                <input type="hidden" name="slab_id" value="{{slab.id}}"/>
                 <table>
                     <thead>
                     <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
@@ -67,5 +67,6 @@
             </form>
         </span>
     </div>
+    <br>
 </div>
 {% endblock %}

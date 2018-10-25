@@ -1,8 +1,10 @@
 body {
     background: white url("images/background.jpg") no-repeat center center fixed;
+    background: transparent\9;
     background-size: cover;
     max-width: 100%;
     overflow-x: hidden;
+    font-family: 'Fredoka One', cursive;
 }
 #main_div {
     margin: 1%;
@@ -11,6 +13,7 @@ body {
 #site_name {
     padding-left: 1%;
     font-weight: bold;
+    text-shadow: 2px 2px blue;
 }
 .nav-wrapper {
   background: linear-gradient(to right, Lime, SeaGreen);
@@ -36,4 +39,7 @@ table {
     padding: 1%;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
+}
+#add_sticker_area {
+    background-color: rgba(230, 230, 230, 0.7);
 }

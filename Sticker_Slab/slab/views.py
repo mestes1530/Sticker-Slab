@@ -41,8 +41,9 @@ def show_slab(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     return render(request, 'show_slab.html', {'slab':slab})
 
-def add(request):
-    return render(request, 'add.html', {})
+def add(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    return render(request, 'add.html', {'slab': slab})
 
 def delete(request):
     return render(request, 'delete.html', {})
@@ -54,15 +55,15 @@ def create_sticker(request):
     x_coordinate = request.POST['x_coordinate']
     y_coordinate = request.POST['y_coordinate']
     sticker_text = request.POST['sticker_text']
-    sticker = Sticker(slab=sticker_slab, name=sticker_name, x=x_coordinate, y=y_coordinate, text=sticker_text, link=null, image=null)
+    sticker = Sticker(slab=sticker_slab, name=sticker_name, x=x_coordinate, y=y_coordinate, text=sticker_text, link=None, image=None)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
 def browse(request):
     return render(request, 'browse.html', {})
 
-def help(request):
-    return render(request, 'help.html', {})
+def info(request):
+    return render(request, 'info.html', {})
 
 @login_required
 def profile(request):
