@@ -48,6 +48,9 @@ def add(request, slab_id):
 def delete(request):
     return render(request, 'delete.html', {})
 
+def slab_settings(request):
+    return render(request, 'slab_settings.html', {})
+
 def create_sticker(request):
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)

@@ -55,3 +55,7 @@ table {
 #add_sticker_area {
     background-color: rgba(230, 230, 230, 0.7);
 }
+#slab_buttons {
+    position: absolute;
+    bottom: 0px;
+}
