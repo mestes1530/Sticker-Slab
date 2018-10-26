@@ -18,4 +18,5 @@ urlpatterns = [
     path('delete/', views.delete, name='delete'),
     path('slab_settings/', views.slab_settings, name='slab_settings'),
     path('create_sticker/', views.create_sticker, name='create_sticker'),
+    path('show_sticker/<int:slab_id>/<int:sticker_id>/', views.show_slab, name='show_slab'),
 ]

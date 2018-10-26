@@ -62,6 +62,11 @@ def create_sticker(request):
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
+def show_sticker(request, slab_id, sticker_id):
+    slab_id = Slab.objects.get(pk=slab_id)
+    sticker_id = Sticker.objects.get(pk=sticker_id)
+    return render(request, 'show_sticker.html', {})
+
 def browse(request):
     return render(request, 'browse.html', {})
 

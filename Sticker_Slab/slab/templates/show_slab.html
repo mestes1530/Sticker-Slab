@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="main_div"class="grid-example col s12 m6">
-    <h1>{{slab.name}}</h1>
+<h1>{{slab.name}}</h1>
+<div id="main_div"class="grid-example">
     <div id="sticker_area" name="sticker_area">
     {% for sticker in slab.sticker_set.all %}
-    <font>{{sticker.name}}</font>
+    <a class="btn-floating btn-large tooltipped waves-effect waves-light green darken-3" data-position="top" data-tooltip="{{sticker.name}}"><i class="material-icons">assignment</i></a>
     {% endfor %}
     </div>
     <footer id="slab_buttons" name="slab_buttons">
@@ -13,4 +13,10 @@
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:slab_settings' %}"><i class="material-icons">settings</i>Slab Settings</a>
     </footer>
 </div>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.tooltipped');
+        var instances = M.Tooltip.init(elems, {});
+    });
+</script>
 {% endblock %}

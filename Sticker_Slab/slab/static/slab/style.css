@@ -1,6 +1,5 @@
 body {
     background: white url("images/background.jpg") no-repeat center center fixed;
-    background: transparent\9;
     background-size: cover;
     max-width: 100%;
     overflow-x: hidden;
@@ -40,7 +39,27 @@ table {
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.container {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.item {
+  width: 400px;
+}
 #my_slabs {
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: DeepSkyBlue;
+    background-color: rgba(230, 230, 230, 0.7);
+}
+i.icon-blue {
     color: DeepSkyBlue;
 }
 #new_slab {
@@ -48,12 +67,11 @@ table {
     border-color: LightGray;
     border-width: 1px;
     border-bottom-width: 2px;
-    padding: 1%;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    color: lime;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 #add_sticker_area {
-    background-color: rgba(230, 230, 230, 0.7);
+    background-color: rgba(230, 230, 230, 0.3);
 }
 #slab_buttons {
     position: absolute;
