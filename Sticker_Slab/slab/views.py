@@ -55,17 +55,14 @@ def create_sticker(request):
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
     sticker_name = request.POST['sticker_name']
-    x_coordinate = request.POST['x_coordinate']
-    y_coordinate = request.POST['y_coordinate']
     sticker_text = request.POST['sticker_text']
-    sticker = Sticker(slab=sticker_slab, name=sticker_name, x=x_coordinate, y=y_coordinate, text=sticker_text, link=None, image=None)
+    sticker = Sticker(slab=sticker_slab, name=sticker_name, text=sticker_text, link=None, image=None)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
-def show_sticker(request, slab_id, sticker_id):
-    slab_id = Slab.objects.get(pk=slab_id)
-    sticker_id = Sticker.objects.get(pk=sticker_id)
-    return render(request, 'show_sticker.html', {})
+def show_sticker(request, sticker_id):
+    sticker = Sticker.objects.get(pk=sticker_id)
+    return render(request, 'show_sticker.html', {'sticker':sticker})
 
 def browse(request):
     return render(request, 'browse.html', {})

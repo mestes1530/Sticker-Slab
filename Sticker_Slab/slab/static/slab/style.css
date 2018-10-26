@@ -21,7 +21,9 @@ h4 {
 #site_name {
     padding-left: 1%;
     font-weight: bold;
+    font-style: italic;
     text-shadow: 2px 2px blue;
+    flex-shrink: 5px;
 }
 .nav-wrapper {
   background: linear-gradient(to right, Lime, Green);
@@ -62,16 +64,13 @@ table {
 i.icon-blue {
     color: DeepSkyBlue;
 }
-#new_slab {
+#create_new {
     border-style: solid;
     border-color: LightGray;
     border-width: 1px;
     border-bottom-width: 2px;
     color: lime;
     background-color: rgba(0, 0, 0, 0.7);
-}
-#add_sticker_area {
-    background-color: rgba(230, 230, 230, 0.3);
 }
 #slab_buttons {
     position: absolute;

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{user.username}} <a class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">edit</i></a></h1>
 <center>
+<h1>{{user.username}} <a class="btn-floating btn-small waves-effect waves-light green"><i class="material-icons">edit</i></a></h1>
 <div id="main_div" name="main_div" class="container">
-    <div id="new_slab" name="new_slab" class="item col s12 m6">
+    <div id="create_new" name="create_new" class="item col s12 m6">
         <span class="flow-text">
             <form action="{% url 'slab:create_slab' %}" method="post">
                 {% csrf_token %}
