@@ -56,7 +56,8 @@ def create_sticker(request):
     sticker_slab = Slab.objects.get(pk=slab_id)
     sticker_name = request.POST['sticker_name']
     sticker_text = request.POST['sticker_text']
-    sticker = Sticker(slab=sticker_slab, name=sticker_name, text=sticker_text, link=None, image=None)
+    sticker_link = request.POST['sticker_link']
+    sticker = Sticker(slab=sticker_slab, name=sticker_name, text=sticker_text, link=sticker_link, image=None)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 

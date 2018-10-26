@@ -18,11 +18,12 @@ class Sticker(models.Model):
     image = models.ImageField(null=True, blank=True)
 
     def get_type(self):
-        if self.text != None:
+        if self.text is not None:
             return 'text'
-        if self.link != None:
+        if self.link is not None:
             return 'link'
         return 'image'
 
     def __str__(self):
         return self.name
+

@@ -23,7 +23,7 @@ h4 {
     font-weight: bold;
     font-style: italic;
     text-shadow: 2px 2px blue;
-    flex-shrink: 5px;
+    flex-shrink: 1px;
 }
 .nav-wrapper {
   background: linear-gradient(to right, Lime, Green);
@@ -51,7 +51,9 @@ table {
     justify-content: space-evenly;
 }
 .item {
+  display: block;
   width: 400px;
+  margin-left: 20px;
 }
 #my_slabs {
     border-style: solid;
@@ -70,9 +72,24 @@ i.icon-blue {
     border-width: 1px;
     border-bottom-width: 2px;
     color: lime;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.5);
 }
-#slab_buttons {
+footer {
     position: absolute;
     bottom: 0px;
+}
+#sticker_header {
+    padding-left: 2%;
+    color: lime;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#show_text {
+    padding: 1%;
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: black;
+    text-shadow: 1px 1px DeepSkyBlue;
+    background-color: rgba(230, 230, 230, 0.7);
 }
