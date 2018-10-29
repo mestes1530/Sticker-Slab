@@ -10,7 +10,7 @@
     <footer id="slab_buttons" name="slab_buttons">
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:add' slab.id %}"><i class="material-icons">add_to_photos</i>Add</a>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:delete' slab.id %}"><i class="material-icons">delete</i>Delete</a>
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:slab_settings' %}"><i class="material-icons">settings</i>Settings</a>
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:slab_settings' slab.id %}"><i class="material-icons">settings</i>Settings</a>
     </footer>
 </div>
 <!-- Materialize tooltip code -->

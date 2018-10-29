@@ -2,7 +2,7 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}} <i class="material-icons">add_to_photos</i></h1></a>
 <div id="main_div" name="main_div" class="grid-example col s12 m6">
-    <div id="create_new" name="create_new">
+    <div id="create_new" name="create_new" class="black_box">
         <span class="flow-text">
             <form action="{% url 'slab:create_sticker' %}" method="post">
                 {% csrf_token %}
@@ -24,7 +24,7 @@
                         <td><font>Sticker Type:</font></td>
                         <td>
                             <label>Sticker Type</label>
-                            <select id="sticker_type" name="sticker_type" class="browser-default">
+                            <select id="sticker_type" name="sticker_type" class="browser-default"">
                                 <option value="" disabled selected>Choose Type</option>
                                 <option value="text">Text Sticker</option>
                                 <option value="link">Link Sticker</option>
@@ -32,8 +32,8 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td><font><i class="material-icons">assignment</i> Text Sticker:</font></td>
+                    <tr id="sticker_text_row" name="sticker_text_row">
+                        <td><font><i class="material-icons">assignment</i> Post Text:</font></td>
                         <td>
                             <div class="input-field col s6">
                               <textarea id="sticker_text" name="sticker_text" class="materialize-textarea"></textarea>
@@ -41,12 +41,30 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><font><i class="material-icons">link</i> Link Sticker:</font></td>
+                    <tr id="sticker_link_row" name="sticker_link_row">
+                        <td><font><i class="material-icons">link</i> Post Link:</font></td>
                         <td>
                             <div class="input-field col s6">
                                 <input id="sticker_link" name="sticker_link" type="text" class="validate">
                                 <label for="sticker_link">Paste URL link here</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="sticker_image_row" name="sticker_image_row">
+                        <td><font><i class="material-icons">image</i> Post Image:</font></td>
+                        <td>
+                            <div class="input-field col s6">
+                                  <form action="#">
+                                    <div class="file-field input-field">
+                                      <div class="btn green">
+                                        <span>Upload</span>
+                                        <input type="file">
+                                      </div>
+                                      <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Select the image file you want to use">
+                                      </div>
+                                    </div>
+                                  </form>
                             </div>
                         </td>
                     </tr>
@@ -62,4 +80,28 @@
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
     </footer>
 </div>
+<!-- Changes input field depending on sticker type -->
+<script type="text/javascript">
+    let sticker_type = document.querySelector('#sticker_type')
+    let sticker_text_row = document.querySelector('#sticker_text_row')
+    let sticker_image_row = document.querySelector('#sticker_image_row')
+    sticker_type.onchange = function() {
+        sticker_text_row.style.display = 'none'
+        sticker_link_row.style.display = 'none'
+        sticker_image_row.style.display = 'none'
+
+        var type = document.querySelector("#sticker_type").value;
+        if (type === "text") {
+            sticker_text_row.style.display = ''
+        }
+        else if (type === "link") {
+            sticker_link_row.style.display = ''
+        }
+        else if (type === "image") {
+            sticker_image_row.style.display = ''
+        }
+    }
+
+    sticker_type.onchange()
+</script>
 {% endblock %}

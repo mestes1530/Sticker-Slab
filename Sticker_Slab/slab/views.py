@@ -73,8 +73,9 @@ def delete_sticker(request, sticker_id):
     sticker.delete()
     return HttpResponseRedirect(reverse('slab:profile'))
 
-def slab_settings(request):
-    return render(request, 'slab_settings.html', {})
+def slab_settings(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    return render(request, 'slab_settings.html', {'slab': slab})
 
 def browse(request):
     return render(request, 'browse.html', {})
