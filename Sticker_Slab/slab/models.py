@@ -12,7 +12,7 @@ class Slab(models.Model):
 
 class Sticker(models.Model):
     slab = models.ForeignKey(Slab, on_delete=models.PROTECT)
-    name = models.CharField(max_length=200)
+    name = models.CharField(max_length=100)
     text = models.CharField(max_length=500, null=True, blank=True)
     link = models.CharField(max_length=500, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)

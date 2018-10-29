@@ -66,6 +66,9 @@ table {
 i.icon-blue {
     color: DeepSkyBlue;
 }
+i.icon-red {
+    color: red;
+}
 #create_new {
     border-style: solid;
     border-color: LightGray;
@@ -75,7 +78,7 @@ i.icon-blue {
     background-color: rgba(0, 0, 0, 0.5);
 }
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 #sticker_header {
@@ -91,5 +94,31 @@ footer {
     border-bottom-width: 2px;
     color: black;
     text-shadow: 1px 1px DeepSkyBlue;
+    background-color: rgba(230, 230, 230, 0.7);
+}
+#delte_stickers {
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: lime;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#delete_slab {
+    padding: 1%;
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: Lime;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+#delete_stickers {
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: DeepSkyBlue;
+    text-shadow: 1px 1px black;
     background-color: rgba(230, 230, 230, 0.7);
 }

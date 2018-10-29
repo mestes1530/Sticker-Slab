@@ -15,8 +15,10 @@ urlpatterns = [
     path('create_slab/', views.create_slab, name='create_slab'),
     path('show_slab/<int:slab_id>/', views.show_slab, name='show_slab'),
     path('add/<int:slab_id>/', views.add, name='add'),
-    path('delete/', views.delete, name='delete'),
+    path('delete/<int:slab_id>/', views.delete, name='delete'),
     path('slab_settings/', views.slab_settings, name='slab_settings'),
     path('create_sticker/', views.create_sticker, name='create_sticker'),
     path('show_sticker/<int:sticker_id>/', views.show_sticker, name='show_sticker'),
+    path('delete_slab/<int:slab_id>/', views.delete_slab, name='delete_slab'),
+    path('delete_sticker/<int:sticker_id>/', views.delete_sticker, name='delete_sticker'),
 ]

@@ -39,17 +39,11 @@ def create_slab(request):
 
 def show_slab(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
-    return render(request, 'show_slab.html', {'slab':slab})
+    return render(request, 'show_slab.html', {'slab': slab})
 
 def add(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     return render(request, 'add.html', {'slab': slab})
-
-def delete(request):
-    return render(request, 'delete.html', {})
-
-def slab_settings(request):
-    return render(request, 'slab_settings.html', {})
 
 def create_sticker(request):
     slab_id = request.POST['slab_id']
@@ -63,7 +57,24 @@ def create_sticker(request):
 
 def show_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
-    return render(request, 'show_sticker.html', {'sticker':sticker})
+    return render(request, 'show_sticker.html', {'sticker': sticker})
+
+def delete(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    return render(request, 'delete.html', {'slab': slab})
+
+def delete_slab(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    slab.delete()
+    return HttpResponseRedirect(reverse('slab:profile'))
+
+def delete_sticker(request, sticker_id):
+    sticker = Sticker.objects.get(pk=sticker_id)
+    sticker.delete()
+    return HttpResponseRedirect(reverse('slab:profile'))
+
+def slab_settings(request):
+    return render(request, 'slab_settings.html', {})
 
 def browse(request):
     return render(request, 'browse.html', {})

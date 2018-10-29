@@ -1,4 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Delete</h1>
+<a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">delete</i></h1></a>
+<div id="main_div" name="main_div">
+    <div id="delete_stickers" name="delete_stickers">
+    <ul class="collection with-header">
+        <li class="collection-header"><h4>Delete Stickers:</h4></li>
+        {% for sticker in slab.sticker_set.all %}
+        <li class="collection-item"><a href="{% url 'slab:delete_sticker' sticker.id %}"><font>{{sticker.name}}</font><div class="secondary-content"><i class="material-icons icon-red">delete</i></div></a></li>
+        {% endfor %}
+    </ul>
+    </div>
+    <br>
+    <div id="delete_slab" name="delete_slab">
+        <h4>Delete Slab:</h4>
+        <hr>
+        <font>Deleting a slab will delete it and all of it's stickers, making it impossible to recover their data. Make sure this is what you want before you press the button bellow to delete the slab titled "{{slab.name}}".</font>
+        <center><a class="waves-effect waves-light btn red" href="{% url 'slab:delete_slab' slab.id %}"><i class="material-icons left">delete</i>Delete Slab</a></center>
+    </div>
+    <br>
+    <footer>
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
+    </footer>
+</div>
 {% endblock %}

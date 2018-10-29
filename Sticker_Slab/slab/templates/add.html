@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}} <i class="material-icons">add_to_photos</i></h1></a>
 <div id="main_div" name="main_div" class="grid-example col s12 m6">
     <div id="create_new" name="create_new">
         <span class="flow-text">
@@ -57,5 +58,8 @@
         </span>
     </div>
     <br>
+    <footer>
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
+    </footer>
 </div>
 {% endblock %}
