@@ -1,16 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{slab.name}}</h1>
-<div id="main_div"class="grid-example">
+<div class="grid-example main_div">
     <div id="sticker_area" name="sticker_area">
     {% for sticker in slab.sticker_set.all %}
-    <a class="btn-floating btn-large tooltipped waves-effect waves-light green darken-3" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}"><i class="material-icons">assignment</i></a>
+    <a class="btn-floating btn-large tooltipped waves-effect waves-light green darken-3" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}">
+        <i class="material-icons">assignment</i>
+    </a>
     {% endfor %}
     </div>
     <footer id="slab_buttons" name="slab_buttons">
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:add' slab.id %}"><i class="material-icons">add_to_photos</i>Add</a>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:delete' slab.id %}"><i class="material-icons">delete</i>Delete</a>
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:slab_settings' slab.id %}"><i class="material-icons">settings</i>Settings</a>
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:edit' slab.id %}"><i class="material-icons">edit</i>Edit</a>
     </footer>
 </div>
 <!-- Materialize tooltip code -->

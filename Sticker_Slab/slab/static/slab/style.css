@@ -14,9 +14,12 @@ h1 {
 h4 {
     text-decoration: underline;
 }
-#main_div {
+.main_div {
     margin: 1%;
     padding: 1%;
+}
+.nav-wrapper {
+  background: linear-gradient(to right, Lime, Green);
 }
 #site_name {
     padding-left: 1%;
@@ -24,9 +27,6 @@ h4 {
     font-style: italic;
     text-shadow: 2px 2px blue;
     flex-shrink: 1px;
-}
-.nav-wrapper {
-  background: linear-gradient(to right, Lime, Green);
 }
 .black_box {
     padding: 1%;
@@ -37,6 +37,15 @@ h4 {
     color: lime;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.white_list_box {
+    border-style: solid;
+    border-color: LightGray;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    color: DeepSkyBlue;
+    text-shadow: 1px 1px black;
+    background-color: rgba(230, 230, 230, 0.7);
+}
 .th {
     text-align: center;
     text-weight: bold;
@@ -45,10 +54,6 @@ table {
     width: 40%;
     padding: 5%;
     border: 3px solid black;
-}
-#login_area {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
 }
 .container {
     text-align: left;
@@ -62,15 +67,6 @@ table {
 .item {
   display: block;
   width: 400px;
-  margin-left: 20px;
-}
-#my_slabs {
-    border-style: solid;
-    border-color: LightGray;
-    border-width: 1px;
-    border-bottom-width: 2px;
-    color: DeepSkyBlue;
-    background-color: rgba(230, 230, 230, 0.7);
 }
 i.icon-blue {
     color: DeepSkyBlue;
@@ -96,31 +92,4 @@ footer {
     color: black;
     text-shadow: 1px 1px DeepSkyBlue;
     background-color: rgba(230, 230, 230, 0.7);
-}
-#delete_stickers {
-    border-style: solid;
-    border-color: LightGray;
-    border-width: 1px;
-    border-bottom-width: 2px;
-    color: DeepSkyBlue;
-    text-shadow: 1px 1px black;
-    background-color: rgba(230, 230, 230, 0.7);
-}
-#delete_slab {
-    padding: 1%;
-    border-style: solid;
-    border-color: LightGray;
-    border-width: 1px;
-    border-bottom-width: 2px;
-    color: Lime;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-.black_box {
-    padding: 1%;
-    border-style: solid;
-    border-color: LightGray;
-    border-width: 1px;
-    border-bottom-width: 2px;
-    color: lime;
-    background-color: rgba(0, 0, 0, 0.5);
 }

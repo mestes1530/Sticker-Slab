@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">settings</i></h1></a>
-<div id="main_div" name="main_div">
-<h1>Slab Settings</h1>
+<a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">edit</i></h1></a>
+<div class="main_div">
+<h1>Edit Slab</h1>
     <footer>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
     </footer>

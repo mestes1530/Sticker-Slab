@@ -1,39 +1,101 @@
 {% extends 'base.html' %}
 {% block content %}
 <h1>Index</h1>
-<div id="main_div" name="main_div">
-  <div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div>
+<div class = "main_div">
+  <div class = "row">
+     <div class = "col s12 m6">
+        <div class = "card blue-grey lighten-4">
+           <div class = "card-content">
+              <span class = "card-title"><h3>Learn HTML5</h3></span>
+              <p>HTML5 is the next major revision of the HTML standard superseding
+                 HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for
+                 structuring and presenting content on the World Wide Web.</p>
+           </div>
+
+           <div class = "card-action">
+              <button class = "btn waves-effect waves-light blue-grey">
+                 <i class = "material-icons">share</i></button>
+              <a class = "right blue-grey-text" href = "http://www.tutorialspoint.com">
+                 www.tutorialspoint.com</a>
+           </div>
+        </div>
+     </div>
+
+     <div class = "col s12 m6">
+        <div class = "card blue-grey lighten-4">
+           <div class = "card-image">
+              <img src = "html5-mini-logo.jpg">
+           </div>
+
+           <div class = "card-content">
+              <p>HTML5 is the next major revision of the HTML standard superseding
+                 HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for
+                 structuring and presenting content on the World Wide Web.</p>
+           </div>
+
+           <div class = "card-action">
+              <button class = "btn waves-effect waves-light blue-grey">
+                 <i class = "material-icons">share</i></button>
+              <a class = "right blue-grey-text" href = "http://www.tutorialspoint.com">
+                 www.tutorialspoint.com</a>
+           </div>
+        </div>
+     </div>
+  </div>
+
+  <div class = "row">
+     <div class = "col s12 m6">
+        <div class = "card blue-grey lighten-4">
+           <div class = "card-image waves-effect waves-block waves-light">
+              <img class = "activator" src = "html5-mini-logo.jpg">
+           </div>
+
+           <div class = "card-content activator">
+              <p>Click the image to reveal more information.</p>
+           </div>
+
+           <div class = "card-reveal">
+              <span class = "card-title grey-text text-darken-4">HTML5
+                 <i class = "material-icons right">close</i></span>
+              <p>HTML5 is the next major revision of the HTML standard superseding
+                 HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for
+                 structuring and presenting content on the World Wide Web.</p>
+           </div>
+
+           <div class = "card-action">
+              <button class = "btn waves-effect waves-light blue-grey">
+                 <i class = "material-icons">share</i></button>
+              <a class = "right blue-grey-text" href = "http://www.tutorialspoint.com">
+                 www.tutorialspoint.com</a>
+           </div>
+        </div>
+     </div>
+  </div>
+
+  <div class = "row">
+     <div class = "col s12 m3">
+        <div class = "card-panel teal">
+           <span class = "white-text">Simple Card</span>
+        </div>
+     </div>
+
+     <div class = "col s12 m3">
+        <div class = "card small teal">
+           <span class = "white-text">Small Card</span>
+        </div>
+     </div>
+
+     <div class = "col s12 m3">
+        <div class = "card medium teal">
+           <span class = "white-text">Medium Card</span>
+        </div>
+     </div>
+
+     <div class = "col s12 m3">
+        <div class = "card large teal">
+           <span class = "white-text">Large Card</span>
+        </div>
+     </div>
   </div>
 </div>
-<script type="text/javascript">
-
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, {});
-  });
-
-  var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-  });
-</script>
 {% endblock %}

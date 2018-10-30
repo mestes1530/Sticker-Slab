@@ -46,12 +46,20 @@ def add(request, slab_id):
     return render(request, 'add.html', {'slab': slab})
 
 def create_sticker(request):
+    print(request.POST)
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
     sticker_name = request.POST['sticker_name']
-    sticker_text = request.POST['sticker_text']
-    sticker_link = request.POST['sticker_link']
-    sticker = Sticker(slab=sticker_slab, name=sticker_name, text=sticker_text, link=sticker_link, image=None)
+    sticker_type = request.POST['sticker_type']
+    if (sticker_type == 'text'):
+        sticker_text = request.POST['sticker_text']
+        sticker = Sticker(slab=sticker_slab, name=sticker_name, text=sticker_text, link=None, image=None)
+    elif (sticker_type == 'link'):
+        sticker_link = request.POST['sticker_link']
+        sticker = Sticker(slab=sticker_slab, name=sticker_name, text=None, link=sticker_link, image=None)
+    elif (sticker_type == 'image'):
+        sticker_image = request.POST['sticker_image']
+        sticker = Sticker(slab=sticker_slab, name=sticker_name, text=None, link=None, image=sticker_image)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
@@ -73,9 +81,9 @@ def delete_sticker(request, sticker_id):
     sticker.delete()
     return HttpResponseRedirect(reverse('slab:profile'))
 
-def slab_settings(request, slab_id):
+def edit(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
-    return render(request, 'slab_settings.html', {'slab': slab})
+    return render(request, 'edit.html', {'slab': slab})
 
 def browse(request):
     return render(request, 'browse.html', {})
