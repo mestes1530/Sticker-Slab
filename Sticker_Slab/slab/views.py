@@ -46,7 +46,6 @@ def add(request, slab_id):
     return render(request, 'add.html', {'slab': slab})
 
 def create_sticker(request):
-    print(request.POST)
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
     sticker_name = request.POST['sticker_name']
@@ -58,14 +57,17 @@ def create_sticker(request):
         sticker_link = request.POST['sticker_link']
         sticker = Sticker(slab=sticker_slab, name=sticker_name, text=None, link=sticker_link, image=None)
     elif (sticker_type == 'image'):
-        sticker_image = request.POST['sticker_image']
+        sticker_image = request.FILES['sticker_image']
         sticker = Sticker(slab=sticker_slab, name=sticker_name, text=None, link=None, image=sticker_image)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
 def show_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
-    return render(request, 'show_sticker.html', {'sticker': sticker})
+    if (sticker.is_link()):
+        return HttpResponseRedirect(sticker.link)
+    else:
+        return render(request, 'show_sticker.html', {'sticker': sticker})
 
 def delete(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
@@ -78,8 +80,9 @@ def delete_slab(request, slab_id):
 
 def delete_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
+    slab_id = sticker.slab.id
     sticker.delete()
-    return HttpResponseRedirect(reverse('slab:profile'))
+    return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 
 def edit(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)

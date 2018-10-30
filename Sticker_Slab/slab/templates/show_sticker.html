@@ -6,8 +6,16 @@
         <h5>Posted by {{sticker.slab.user.username}} onto {{sticker.slab.name}}</h5>
     </div>
     <div id="show_text" name="show_text">
-        <p>{{sticker.text}}</p>
+            {% if sticker.is_text %}
+                <p>{{sticker.text}}</p>
+            {% elif sticker.is_link %}
+                <a href="{{sticker.link}}">{{sticker.name}}</a>
+            {% elif sticker.is_image %}
+                <img id="display_image" name="display_image" src="{{sticker.image.url}}"/>
+            {% endif %}
     </div>
+    <br>
+    <br>
     <footer>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' sticker.slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
     </footer>

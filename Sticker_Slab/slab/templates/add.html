@@ -2,9 +2,9 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}} <i class="material-icons">add_to_photos</i></h1></a>
 <div class="grid-example col s12 m6 main_div">
-    <div id="create_new" name="create_new" class="black_box">
+    <div id="add_sticker" name="add_sticker" class="black_box">
         <span class="flow-text">
-            <form action="{% url 'slab:create_sticker' %}" method="post">
+            <form action="{% url 'slab:create_sticker' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="slab_id" value="{{slab.id}}"/>
                 <table>
@@ -57,10 +57,10 @@
                                 <div class="file-field input-field">
                                   <div class="btn green">
                                     <span>Upload</span>
-                                    <input type="file">
+                                    <input type="file" name="sticker_image" accept="image/*"/>
                                   </div>
                                   <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="file" placeholder="Select the image file you want to use">
+                                    <input class="file-path validate" type="text" name="sticker_image2" placeholder="Select the image file you want to use">
                                   </div>
                                 </div>
                             </div>

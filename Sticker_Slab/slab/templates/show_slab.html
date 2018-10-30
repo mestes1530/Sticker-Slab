@@ -5,7 +5,13 @@
     <div id="sticker_area" name="sticker_area">
     {% for sticker in slab.sticker_set.all %}
     <a class="btn-floating btn-large tooltipped waves-effect waves-light green darken-3" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}">
-        <i class="material-icons">assignment</i>
+        {% if sticker.is_text %}
+            <i class="material-icons">assignment</i>
+        {% elif sticker.is_link %}
+            <i class="material-icons">link</i>
+        {% else %}
+            <i class="material-icons">image</i>
+        {% endif %}
     </a>
     {% endfor %}
     </div>

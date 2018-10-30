@@ -17,13 +17,24 @@ class Sticker(models.Model):
     link = models.CharField(max_length=500, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
+    def is_text(self):
+        return self.text is not None and self.text != ''
+
+    def is_link(self):
+        return self.link is not None and self.link != ''
+
+    def is_image(self):
+        return self.image is not None and self.image != ''
+
     def get_type(self):
-        if self.text is not None:
+        if self.text is not None or self.text == '':
             return 'text'
-        if self.link is not None:
+        if self.link is not None or self.link == '':
             return 'link'
         return 'image'
 
     def __str__(self):
         return self.name
 
+class UploadedImages(models.Model):
+    sticker_image = models.ImageField(upload_to='images/')
