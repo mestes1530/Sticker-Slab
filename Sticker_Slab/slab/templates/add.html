@@ -21,10 +21,24 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><font>Sticker Color:</font></td>
+                        <td>
+                            <label>Sticker Color</label>
+                            <select id="sticker_color" name="sticker_color" class="browser-default">
+                                <option value="" disabled selected>Choose Color</option>
+                                <option value="#424242">Black</option>
+                                <option value="#81d4fa">Blue</option>
+                                <option value="#66bb6a">Green</option>
+                                <option value="#d32f2f">Red</option>
+                                <option value="#ffd600">Yellow</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><font>Sticker Type:</font></td>
                         <td>
                             <label>Sticker Type</label>
-                            <select id="sticker_type" name="sticker_type" class="browser-default"">
+                            <select id="sticker_type" name="sticker_type" class="browser-default">
                                 <option value="" disabled selected>Choose Type</option>
                                 <option value="text">Text Sticker</option>
                                 <option value="link">Link Sticker</option>
@@ -73,6 +87,7 @@
             </form>
         </span>
     </div>
+    <br>
     <br>
     <footer>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
