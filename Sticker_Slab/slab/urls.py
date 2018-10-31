@@ -12,6 +12,7 @@ urlpatterns = [
     path('signup_user/', views.signup_user, name='signup_user'),
     path('signin_user/', views.signin_user, name='signin_user'),
     path('signout_user/', views.signout_user, name='signout_user'),
+    path('switch_users/', views.switch_users, name='switch_users'),
     path('create_slab/', views.create_slab, name='create_slab'),
     path('show_slab/<int:slab_id>/', views.show_slab, name='show_slab'),
     path('add/<int:slab_id>/', views.add, name='add'),

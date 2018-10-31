@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Browse</h1>
+<h1>Search Slabs</h1>
 <div class="main_div">
+  <div id="search_bar" name="search_bar" class="nav-wrapper">
+    <form>
+      <div class="input-field">
+        <input id="search" type="search" required>
+        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+        <i class="material-icons">close</i>
+      </div>
+    </form>
+  </div>
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
       <a class="btn waves-effect white grey-text darken-text-2">button</a>

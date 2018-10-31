@@ -29,6 +29,10 @@ def signout_user(request):
     logout(request)
     return render(request, 'index.html', {})
 
+def switch_users(request):
+    logout(request)
+    return render(request, 'register.html', {})
+
 def create_slab(request):
     slab_creator = request.user
     slab_name = request.POST['slab_name']

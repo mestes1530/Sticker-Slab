@@ -2,10 +2,7 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">edit</i></h1></a>
 <div class="main_div">
-    <div class="black_box">
-        <a class="waves-effect waves-light btn-large" onclick="changeBackground()">Change background</a>
-    </div>
-    <div class="white_list_box">
+    <div id="slab_settings" name="slab_settings" class="white_list_box">
         <ul class="collapsible">
             <li>
                 <div class="collapsible-header"><i class="material-icons">share</i>Share Slab Link</div>
@@ -15,7 +12,24 @@
             </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons">wallpaper</i>Change Wallpaper</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                <div class="collapsible-body">
+                    <font>Press Button to "change" wallpaper: </font>
+                    <a class="waves-effect waves-light btn-small" onclick="changeBackground()">Change background</a>
+                </div>
+                <div class="collapsible-body">
+                    <font>Input your own image: </font>
+                    <form action="#">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>File</span>
+                                <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </li>
             <li>
                 <div class="collapsible-header"><i class="material-icons">code</i>Edit HTML Code</div>
@@ -33,6 +47,14 @@
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems, {});
+    });
+
+    $(document).ready(function() {
+        M.updateTextFields();
+    });
+
+    $(document).ready(function() {
+        $('input#input_text, textarea#textarea2').characterCounter();
     });
 
     function changeBackground() {
