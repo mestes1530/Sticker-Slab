@@ -61,7 +61,7 @@ def create_sticker(request):
         sticker_image = request.FILES['sticker_image']
         sticker = Sticker(slab=sticker_slab, name=sticker_name, color=sticker_color, text=None, link=None, image=sticker_image)
     sticker.save()
-    return HttpResponseRedirect(reverse('slab:profile'))
+    return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 
 def show_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
@@ -83,7 +83,7 @@ def delete_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
     slab_id = sticker.slab.id
     sticker.delete()
-    return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
+    return HttpResponseRedirect(reverse('slab:delete', kwargs={'slab_id':slab_id}))
 
 def edit(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)

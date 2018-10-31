@@ -2,9 +2,41 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">edit</i></h1></a>
 <div class="main_div">
-<h1>Edit Slab</h1>
+    <div class="black_box">
+        <a class="waves-effect waves-light btn-large" onclick="changeBackground()">Change background</a>
+    </div>
+    <div class="white_list_box">
+        <ul class="collapsible">
+            <li>
+                <div class="collapsible-header"><i class="material-icons">share</i>Share Slab Link</div>
+                <div class="collapsible-body">
+                    <span>Lorem ipsum dolor sit amet.</span>
+                </div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">wallpaper</i>Change Wallpaper</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+            <li>
+                <div class="collapsible-header"><i class="material-icons">code</i>Edit HTML Code</div>
+                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            </li>
+        </ul>
+    </div>
     <footer>
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i
+                class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
     </footer>
 </div>
+<!-- Changes the background image -->
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, {});
+    });
+
+    function changeBackground() {
+        document.body.style.backgroundImage = "url('https://i.redd.it/24y4a814zy801.jpg')";
+    }
+</script>
 {% endblock %}
