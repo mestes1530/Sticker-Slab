@@ -49,17 +49,19 @@
     </div>
 </div>
 <div class="main_div">
+    <button onclick="myFunction()">Try it</button>
+    <p id="demo"></p>
     <footer>
         <a class="dropdown-trigger waves-effect waves-light btn-small blue" data-target='dropdown1'>
             <i class="material-icons">settings</i> Account Settings</a>
         <ul id='dropdown1' class='dropdown-content'>
-            <li><a href="{% url 'slab:switch_users' %}" class = "blue-text"><i class="material-icons">loop</i> Switch User</a></li>
-            <li><a href="#!" class = "blue-text"><i class="material-icons">border_color</i> Edit User</a></li>
-            <li><a href="#!" class = "red-text"><i class="material-icons">delete_forever</i> Delete User</a></li>
-            <li><a href="#!" class = "blue-text"><i class="material-icons">code</i> Profile HTML</a></li>
-            <li><a href="#!" class = "blue-text"><i class="material-icons">save</i> Saved Slabs</a></li>
+            <li><a href="{% url 'slab:switch_users' %}" class="blue-text"><i class="material-icons">loop</i> Switch User</a></li>
+            <li><a href="#!" class="blue-text"><i class="material-icons">border_color</i> Edit User</a></li>
+            <li><a onclick="deleteAccount()" class="red-text"><i class="material-icons">delete_forever</i> Delete User</a></li>
+            <li><a href="#!" class="blue-text"><i class="material-icons">code</i> Profile HTML</a></li>
+            <li><a href="{% url 'slab:bookmarked' %}" class="blue-text"><i class="material-icons">book</i> Bookmarked</a></li>
             <li class="divider" tabindex="-1" class = "blue-text"></li>
-            <li><a href="#!" class = "blue-text"><i class="material-icons">expand_more</i> Close Settings</li>
+            <li><a href="#!" class="blue-text"><i class="material-icons">expand_more</i> Close Settings</li>
         </ul>
     </footer>
 </div>
@@ -69,5 +71,16 @@
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems, {});
     });
+
+    function deleteAccount() {
+        var txt;
+        var r = confirm("Are you sure you want to delete your account? Once deleted the account can never be recovered.");
+        if (r == true) {
+            txt = "You pressed OK!";
+        } else {
+            txt = "You pressed Cancel!";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
 </script>
 {% endblock %}

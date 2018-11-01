@@ -45,6 +45,12 @@ def show_slab(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     return render(request, 'show_slab.html', {'slab': slab})
 
+def bookmark(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    user = request.user
+    slab.bookmarkings.add(user)
+    return render(request, 'show_slab.html', {'slab': slab})
+
 def add(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     return render(request, 'add.html', {'slab': slab})
@@ -94,7 +100,8 @@ def edit(request, slab_id):
     return render(request, 'edit.html', {'slab': slab})
 
 def browse(request):
-    return render(request, 'browse.html', {})
+    slabs = Slab.objects.filter(private=False)
+    return render(request, 'browse.html', {'slabs':slabs})
 
 def info(request):
     return render(request, 'info.html', {})
@@ -102,6 +109,9 @@ def info(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html', {})
+
+def bookmarked(request):
+    return render(request, 'bookmarked.html', {})
 
 def register(request):
     return render(request, 'register.html', {})

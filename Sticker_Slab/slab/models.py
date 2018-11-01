@@ -1,10 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+
 class Slab(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     private = models.BooleanField(default=False)
+    bookmarkings = models.ManyToManyField(User, related_name='bookmarked_slabs')
 
     def __str__(self):
         return self.name
@@ -13,10 +16,11 @@ class Slab(models.Model):
 class Sticker(models.Model):
     slab = models.ForeignKey(Slab, on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
-    color = models.CharField(max_length=100)
+    color = models.CharField(max_length=8)
     text = models.CharField(max_length=500, null=True, blank=True)
     link = models.CharField(max_length=500, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
+
 
     def is_text(self):
         return self.text is not None and self.text != ''

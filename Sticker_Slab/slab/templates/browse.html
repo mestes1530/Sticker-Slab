@@ -32,9 +32,19 @@
       <p class="white-text">This is your fourth panel</p>
     </div>
   </div>
+  <br>
+  <div id="all_public_slabs" name="all_public_slabs" class="black_box">
+    <center>
+      <h4>All Public Slabs</h4>
+      <hr> |
+      {% for slab in slabs %}
+      <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a> |
+      {% endfor %}
+    </center>
+  </div>
+  <br>
 </div>
 <script type="text/javascript">
-
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, {});

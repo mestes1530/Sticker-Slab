@@ -15,14 +15,33 @@
     </a>
     {% endfor %}
     </div>
-    <footer id="slab_buttons" name="slab_buttons">
+    {% if slab.user.id == user.id %}
+    <footer id="user_slab_buttons" name="user_slab_buttons">
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:add' slab.id %}"><i class="material-icons">add_to_photos</i>Add</a>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:delete' slab.id %}"><i class="material-icons">delete</i>Delete</a>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:edit' slab.id %}"><i class="material-icons">edit</i>Edit</a>
     </footer>
+    {% else %}
+    <footer id="guest_slab_button" name="guest_slab_button">
+        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark</a>
+    </footer>
+    {% endif %}
 </div>
 <!-- Materialize tooltip code -->
 <script type="text/javascript">
+    let slab_creator = document.getElementById('slab_id').user
+    let user_slab_buttons = document.querySelector('#user_slab_buttons')
+    let guest_slab_button = document.querySelector('#guest_slab_button')
+    if (user.id === slab.user.id) {
+        guest_slab_button.style.display = 'none'
+    }
+    else {
+        user_slab_buttons.style.display = 'none'
+    }
+
+
+
+
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems, {});

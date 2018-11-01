@@ -51,6 +51,10 @@ h4 {
     text-shadow: 1px 1px black;
     background-color: rgba(230, 230, 230, 0.7);
 }
+.single_centered_box {
+    margin-left: 18%;
+    margin-right: 18%;
+}
 .th {
     text-align: center;
     text-weight: bold;
@@ -73,7 +77,6 @@ table {
   display: block;
   width: 400px;
 }
-.setting
 i.icon-blue {
     color: DeepSkyBlue;
 }
@@ -98,14 +101,6 @@ footer {
     color: black;
     text-shadow: 1px 1px DeepSkyBlue;
     background-color: rgba(230, 230, 230, 0.7);
-}
-#add_sticker {
-    margin-left: 18%;
-    margin-right: 18%;
-}
-#slab_settings {
-    margin-left: 10%;
-    margin-right: 10%;
 }
 #display_image {
     width: 100%;

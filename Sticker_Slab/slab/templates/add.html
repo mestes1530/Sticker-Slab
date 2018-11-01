@@ -2,7 +2,7 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}} <i class="material-icons">add_to_photos</i></h1></a>
 <div class="grid-example col s12 m6 main_div">
-    <div id="add_sticker" name="add_sticker" class="black_box">
+    <div id="add_sticker" name="add_sticker" class="black_box single_centered_box">
         <span class="flow-text">
             <form action="{% url 'slab:create_sticker' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
