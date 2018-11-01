@@ -33,6 +33,9 @@ def switch_users(request):
     logout(request)
     return render(request, 'register.html', {})
 
+def delete_user(request):
+    user = request.user
+
 def create_slab(request):
     slab_creator = request.user
     slab_name = request.POST['slab_name']
@@ -111,7 +114,13 @@ def profile(request):
     return render(request, 'profile.html', {})
 
 def bookmarked(request):
-    return render(request, 'bookmarked.html', {})
+    user = request.user
+    slabs = Slab.objects.filter(bookmarkings=user)
+    return render(request, 'bookmarked.html', {'slabs': slabs})
+
+def remove_bookmark(request, slab_id):
+    slab = Slab.objects.get(pk=slab_id)
+    slab.bookmarkings
 
 def register(request):
     return render(request, 'register.html', {})

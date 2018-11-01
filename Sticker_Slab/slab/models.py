@@ -1,13 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
-
 class Slab(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     name = models.CharField(max_length=200)
     private = models.BooleanField(default=False)
-    bookmarkings = models.ManyToManyField(User, related_name='bookmarked_slabs')
+    bookmarkings = models.ManyToManyField(User, related_name='bookmarked_slabs', blank=True)
+    background = models.ImageField(null=True, blank=True)
+
+    def get_background(self):
+        if self.background == '':
+            return '/static/slab/images/background_default.jpg'
+        return self.background.url
 
     def __str__(self):
         return self.name

@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
+<style>
+    body {
+        background-image: url('{{slab.get_background}}') !important;
+    }
+</style>
 <h1>{{slab.name}}</h1>
 <div class="grid-example main_div">
     <div id="sticker_area" name="sticker_area">
@@ -38,9 +43,6 @@
     else {
         user_slab_buttons.style.display = 'none'
     }
-
-
-
 
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');

@@ -4,7 +4,13 @@
 <div class = "main_div">
     <div class="white_list_box single_centered_box">
         <ul class="collection with-header">
-            <li class="collection-item"><div>Alvin<a href="#!" class="secondary-content"><i class="material-icons icon-blue">input</i></a></div></li>
+            {% for slab in slabs %}
+            <li class="collection-item">
+                <a href="{% url 'slab:show_slab' slab.id  %}">{{slab.name}}</a>
+                <a href="#" class="secondary-content">&nbsp;<i class="material-icons icon-red">delete</i></a>
+                <a href="{% url 'slab:show_slab' slab.id  %}" class="secondary-content"><i class="material-icons icon-blue">input</i></a>
+            </li>
+            {% endfor %}
         </ul>
     </div>
 </div>
