@@ -20,6 +20,7 @@ urlpatterns = [
     path('add/<int:slab_id>/', views.add, name='add'),
     path('delete/<int:slab_id>/', views.delete, name='delete'),
     path('edit/<int:slab_id>/', views.edit, name='edit'),
+    path('edit_slab/', views.edit_slab, name='edit_slab'),
     path('create_sticker/', views.create_sticker, name='create_sticker'),
     path('show_sticker/<int:sticker_id>/', views.show_sticker, name='show_sticker'),
     path('delete_slab/<int:slab_id>/', views.delete_slab, name='delete_slab'),

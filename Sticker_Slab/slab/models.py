@@ -13,15 +13,6 @@ class Slab(models.Model):
             return '/static/slab/images/background_default.jpg'
         return self.background.url
 
-    def set_default_background(self):
-        self.background = '/static/slab/images/background_default.jpg'
-
-    def set_space_background(self):
-        self.background = '/static/slab/images/background_space.jpg'
-
-    def set_triangle_background(self):
-        self.background = '/static/slab/images/background_triangle.png'
-
     def __str__(self):
         return self.name
 

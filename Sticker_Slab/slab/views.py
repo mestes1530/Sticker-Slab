@@ -102,6 +102,20 @@ def edit(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     return render(request, 'edit.html', {'slab': slab})
 
+def edit_slab(request):
+    print(request.POST)
+    slab_id = request.POST['slab_id']
+    sticker_slab = Slab.objects.get(pk=slab_id)
+    wallpaper = request.POST['wallpaper']
+    if wallpaper == 'default':
+        sticker_slab.background = "/slab/static/slab/images/background_default.jpg"
+    elif wallpaper == 'space':
+        sticker_slab.background = "/static/slab/images/background_space.jpg"
+    elif wallpaper == 'triangle':
+        sticker_slab.background = "/slab/static/slab/images/background_triangle.png"
+    sticker_slab.save()
+    return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
+
 def browse(request):
     slabs = Slab.objects.filter(private=False)
     return render(request, 'browse.html', {'slabs':slabs})

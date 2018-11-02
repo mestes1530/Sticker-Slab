@@ -2,42 +2,51 @@
 {% block content %}
 <a href="{% url 'slab:show_slab' slab.id %}"><h1>{{slab.name}}<i class="material-icons">edit</i></h1></a>
 <div class="main_div">
-    <div id="slab_settings" name="slab_settings" class="white_list_box single_centered_box">
-        <ul class="collapsible">
-            <li>
-                <div class="collapsible-header"><i class="material-icons">share</i>Share Slab Link</div>
-                <div class="collapsible-body">
-                    <span>Lorem ipsum dolor sit amet.</span>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">wallpaper</i>Change Wallpaper</div>
-                <div class="collapsible-body">
-                    <a class="waves-effect waves-light btn-small" onclick="changeBackground(default)">Default wallpaper</a>
-                    <a class="waves-effect waves-light btn-small" onclick="changeBackground(space)">Space wallpaper</a>
-                    <a class="waves-effect waves-light btn-small" onclick="changeBackground(triangle)">Triangle wallpaper</a>
-                </div>
-                <div class="collapsible-body">
-                    <font>Input your own image: </font>
-                    <form action="#">
-                        <div class="file-field input-field">
-                            <div class="btn">
-                                <span>File</span>
-                                <input type="file">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </li>
-            <li>
-                <div class="collapsible-header"><i class="material-icons">code</i>Edit HTML Code</div>
-                <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-            </li>
-        </ul>
-    </div>
+    <form action="{% url 'slab:edit_slab' %}" method="post">
+        {% csrf_token %}
+        <input name="slab_id" value="{{slab.id}}" type="hidden">
+        <div id="slab_settings" name="slab_settings" class="white_list_box single_centered_box">
+            <ul class="collapsible">
+                <!-- Copy Slab's Link -->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">share</i>Share Slab Link</div>
+                    <div class="collapsible-body">
+                        <span>Lorem ipsum dolor sit amet.</span>
+                    </div>
+                </li>
+                <!-- Change Slab's Wallpaper -->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">wallpaper</i>Change Wallpaper</div>
+                    <div id="wallpaper_type" name="wallpaper_type" class="collapsible-body">
+                        <p>
+                            <label>
+                                <input name="wallpaper" id="default_wallpaper" value="default" type="radio" selected/>
+                                <span>Default Wallpaper</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="wallpaper" id="space_wallpaper" value="space" type="radio"/>
+                                <span>Space Wallpaper</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="wallpaper" id="triangle_wallpaper" value="triangle" type="radio"/>
+                                <span>Triangle Wallpaper</span>
+                            </label>
+                        </p>
+                    </div>
+                </li>
+                <!-- Edit Slab's HTML -->
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">code</i>Edit HTML Code</div>
+                    <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                </li>
+            </ul>
+        </div>
+        <button type="submit">Save</button>
+    </form>
     <footer>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i
                 class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
@@ -57,11 +66,5 @@
     $(document).ready(function() {
         $('input#input_text, textarea#textarea2').characterCounter();
     });
-
-    function changeBackground(value) {
-        if (value === "default") {
-            document.body.style.backgroundImage = "url('{{slab.set_background}}')";
-        }
-    }
 </script>
 {% endblock %}
