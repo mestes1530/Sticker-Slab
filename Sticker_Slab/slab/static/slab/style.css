@@ -26,6 +26,13 @@ h4 {
 #search_bar {
     background: linear-gradient(to right, AliceBlue, LightSteelBlue);
 }
+#site_title {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-right: 2%;
+}
 #site_name {
     padding-left: 1%;
     font-weight: bold;
