@@ -7,7 +7,7 @@
 </style>
 <h1>{{slab.name}}</h1>
 <div class="grid-example main_div">
-    <div id="sticker_area" name="sticker_area">
+    <div id="sticker_area" name="sticker_area" onclick="showCoords(event)">
     {% for sticker in slab.sticker_set.all %}
     <a class="btn-floating btn-large tooltipped waves-effect waves-light" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}" style="background-color:{{sticker.color}}">
         {% if sticker.is_text %}
@@ -19,6 +19,7 @@
         {% endif %}
     </a>
     {% endfor %}
+    <p id="demo"></p>
     </div>
     {% if slab.user.id == user.id %}
     <footer id="user_slab_buttons" name="user_slab_buttons">
@@ -32,6 +33,20 @@
     </footer>
     {% endif %}
 </div>
+
+<!-- Get X and Y coordinates -->
+<script type="text/javascript">
+function showCoords(event) {
+    var cX = event.clientX;
+    var sX = event.screenX;
+    var cY = event.clientY;
+    var sY = event.screenY;
+    var coords1 = "client - X: " + cX + ", Y coords: " + cY;
+    var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
+    document.getElementById("demo").innerHTML = coords1 + "<br>" + coords2;
+}
+</script>
+
 <!-- Materialize tooltip code -->
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function() {

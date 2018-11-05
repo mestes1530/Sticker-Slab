@@ -117,8 +117,8 @@ def edit_slab(request):
         sticker_slab.background = "/slab/static/slab/images/background_triangle.png"
     elif wallpaper == 'abstract':
         sticker_slab.background = "/slab/static/slab/images/background_abstract.jpg"
-    elif wallpaper == 'gradiant':
-        sticker_slab.background = "/slab/static/slab/images/background_gradiant.jpg"
+    elif wallpaper == 'gradient':
+        sticker_slab.background = "/slab/static/slab/images/background_gradient.jpg"
     sticker_slab.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 
