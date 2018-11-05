@@ -89,6 +89,8 @@ def delete(request, slab_id):
 
 def delete_slab(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
+    stickers = Sticker.objects.filter(slab_id=slab_id)
+    stickers.delete()
     slab.delete()
     return HttpResponseRedirect(reverse('slab:profile'))
 
@@ -110,9 +112,13 @@ def edit_slab(request):
     if wallpaper == 'default':
         sticker_slab.background = "/slab/static/slab/images/background_default.jpg"
     elif wallpaper == 'space':
-        sticker_slab.background = "/static/slab/images/background_space.jpg"
+        sticker_slab.background = "/slab/static/slab/images/background_space.jpg"
     elif wallpaper == 'triangle':
         sticker_slab.background = "/slab/static/slab/images/background_triangle.png"
+    elif wallpaper == 'abstract':
+        sticker_slab.background = "/slab/static/slab/images/background_abstract.jpg"
+    elif wallpaper == 'gradiant':
+        sticker_slab.background = "/slab/static/slab/images/background_gradiant.jpg"
     sticker_slab.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 

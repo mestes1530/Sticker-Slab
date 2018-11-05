@@ -90,6 +90,16 @@ i.icon-blue {
 i.icon-red {
     color: red;
 }
+.card-title {
+    background-color: blue;
+    color: white;
+    text-shadow: 2px 2px Lime;
+}
+#landing_card {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 20%;
+}
 footer {
     position: fixed;
     bottom: 0px;

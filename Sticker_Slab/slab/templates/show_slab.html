@@ -34,16 +34,6 @@
 </div>
 <!-- Materialize tooltip code -->
 <script type="text/javascript">
-    let slab_creator = document.getElementById('slab_id').user
-    let user_slab_buttons = document.querySelector('#user_slab_buttons')
-    let guest_slab_button = document.querySelector('#guest_slab_button')
-    if (user.id === slab.user.id) {
-        guest_slab_button.style.display = 'none'
-    }
-    else {
-        user_slab_buttons.style.display = 'none'
-    }
-
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems, {});

@@ -36,6 +36,18 @@
                                 <span>Triangle Wallpaper</span>
                             </label>
                         </p>
+                        <p>
+                            <label>
+                                <input name="wallpaper" id="abstract_wallpaper" value="abstract" type="radio"/>
+                                <span>Abstract Wallpaper</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input name="wallpaper" id="gradiant_wallpaper" value="gradiant" type="radio"/>
+                                <span>Gradiant Wallpaper</span>
+                            </label>
+                        </p>
                     </div>
                 </li>
                 <!-- Edit Slab's HTML -->
@@ -45,7 +57,12 @@
                 </li>
             </ul>
         </div>
-        <button type="submit">Save</button>
+        <br>
+        <center>
+            <button class="btn waves-effect waves-light blue" type="submit" name="action">Save
+                <i class="material-icons left">save</i>
+            </button>
+        </center>
     </form>
     <footer>
         <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:show_slab' slab.id %}"><i

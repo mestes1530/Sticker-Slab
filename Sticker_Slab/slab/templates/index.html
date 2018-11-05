@@ -7,36 +7,16 @@
     </center>
 </h1>
 <div class = "main_div">
-    <div class="row">
-        <div class="col s8 m6">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{% static 'slab/images/sticker_slab.jpg' %}">
-                    <span class="card-title" style="background:DeepSkyBlue;">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
+    <div id="landing_card" name="landing_card" class="card">
+        <div class="card-image">
+            <img src="{% static 'slab/images/sticker_slab.jpg' %}">
+            <span class="card-title">Getting Started</span>
         </div>
-        <div class="col s8 m6">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{% static 'slab/images/sticker_slab.jpg' %}">
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
+        <div class="card-content">
+            <p>Sticker Slab is a simple social media that...</p>
+        </div>
+        <div class="card-action">
+            <a href="{% url 'slab:register' %}">Sign Up/In</a>
         </div>
     </div>
 </div>
