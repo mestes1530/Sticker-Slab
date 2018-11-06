@@ -5,10 +5,6 @@
         background-image: url('{{slab.get_background}}') !important;
     }
 </style>
-<div id="slab_header" name="slab_header">
-    <h1>{{slab.name}}</h1>
-</div>
-<hr>
 <!-- Add Sticker Modal -->
 <div id="add_sticker_modal" class="modal">
     <div class="modal-content">
@@ -16,6 +12,9 @@
             <form action="{% url 'slab:create_sticker' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="hidden" name="slab_id" value="{{slab.id}}"/>
+                <input type="hidden" name="sticker_x" id="sticker_x" value="0"/>
+                <input type="hidden" name="sticker_y" id="sticker_y" value="0"/>
+
                 <table>
                     <tr>
                         <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
@@ -147,6 +146,8 @@
                                 <option value="triangle">Triangle Wallpaper</option>
                                 <option value="abstract">Abstract Wallpaper</option>
                                 <option value="gradient">Gradient Wallpaper</option>
+                                <option value="waterlily">Water Lily Wallpaper</option>
+                                <option value="city">City Wallpaper</option>
                             </select>
                         </td>
                     </tr>
@@ -164,35 +165,75 @@
         </span>
     </div>
 </div>
-<div class="grid-example main_div">
-    <div id="sticker_area" name="sticker_area" onclick="showCoords(event)">
-        {% for sticker in slab.sticker_set.all %}
-        <a class="btn-floating btn-large tooltipped waves-effect waves-light" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}" style="background-color:{{sticker.color}}">
-            {% if sticker.is_text %}
-                <i class="material-icons">assignment</i>
-            {% elif sticker.is_link %}
-                <i class="material-icons">link</i>
-            {% else %}
-                <i class="material-icons">image</i>
-            {% endif %}
-        </a>
-        {% endfor %}
-        <p id="demo"></p>
-    </div>
+<!-- Slab Header -->
+<div id="slab_header" name="slab_header">
+    <h1>{{slab.name}}</h1>
+</div>
+<!-- Slab Sticker Area -->
+<div id="slab_sticker_area" name="slab_sticker_area">
+    {% for sticker in slab.sticker_set.all %}
+    <a class="btn-floating btn-large tooltipped waves-effect waves-light" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}" style="background-color:{{sticker.color}};position:absolute;top:{{sticker.position_y}}px;left:{{sticker.position_x}}px">
+        {% if sticker.is_text %}
+            <i class="material-icons">assignment</i>
+        {% elif sticker.is_link %}
+            <i class="material-icons">link</i>
+        {% else %}
+            <i class="material-icons">image</i>
+        {% endif %}
+    </a>
+    {% endfor %}
+    <p id="demo" name="demo"></p>
+</div>
+<!-- Slab Footer -->
+<div id="slab_footer" name="slab_footer" class="footer_button">
     {% if slab.user.id == user.id %}
     <footer id="user_slab_buttons" name="user_slab_buttons">
-        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#add_sticker_modal"><i class="material-icons">add_to_photos</i>Add</a>
-        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#delete_sticker_modal"><i class="material-icons">delete</i>Delete</a>
-        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#edit_slab_modal"><i class="material-icons">edit</i>Edit</a>
+        <a id="add_sticker_bt" class="waves-effect waves-light btn blue modal-trigger" href="#"><i class="material-icons">add_to_photos</i>Add</a>
+        <a class="waves-effect waves-light btn blue modal-trigger" href="#delete_sticker_modal"><i class="material-icons">delete</i>Delete</a>
+        <a class="waves-effect waves-light btn blue modal-trigger" href="#edit_slab_modal"><i class="material-icons">edit</i>Edit</a>
     </footer>
     {% else %}
     <footer id="guest_slab_button" name="guest_slab_button">
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark</a>
+        <a class="waves-effect waves-light btn blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark</a>
     </footer>
     {% endif %}
 </div>
 
+
 <script type="text/javascript">
+    // <!-- Position a Sticker -->
+    let add_sticker_bt = document.querySelector('#add_sticker_bt')
+    let sticker_x = document.querySelector('#sticker_x')
+    let sticker_y = document.querySelector('#sticker_y')
+
+    let listen_add_sticker = false
+
+    add_sticker_bt.onclick = function() {
+        M.toast({html: 'Click where on the Slab you want the sticker posted.'})
+        listen_add_sticker = true
+    }
+
+    let slab_sticker_area = document.querySelector('#slab_sticker_area')
+    slab_sticker_area.onclick = function(e) {
+
+        if (!listen_add_sticker) return
+        listen_add_sticker = false
+
+
+        let rect = e.target.getBoundingClientRect();
+        sticker_x.value = Math.floor(e.clientX - rect.left)
+        sticker_y.value = Math.floor(e.clientY - rect.top)
+
+        var instance = M.Modal.getInstance(document.querySelector('#add_sticker_modal'));
+
+        // copy the mouse x and y to input fields inside the modal
+
+        instance.open()
+
+
+
+
+    }
 
     // <!-- Changes input field depending on sticker type -->
     let sticker_type = document.querySelector('#sticker_type')
@@ -214,9 +255,7 @@
             sticker_image_row.style.display = ''
         }
     }
-
     sticker_type.onchange()
-
 
 
     // <!-- Modals Scripts -->
@@ -225,18 +264,8 @@
         var instances = M.Modal.init(elems, {});
     });
 
-    // <!-- Get X and Y coordinates -->
-    function showCoords(event) {
-        var cX = event.clientX;
-        var sX = event.screenX;
-        var cY = event.clientY;
-        var sY = event.screenY;
-        var coords1 = "client - X: " + cX + ", Y coords: " + cY;
-        var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
-        document.getElementById("demo").innerHTML = coords1 + "<br>" + coords2;
-    }
-    // <!-- Materialize tooltip code -->
 
+    // <!-- Materialize tooltip code -->
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems, {});

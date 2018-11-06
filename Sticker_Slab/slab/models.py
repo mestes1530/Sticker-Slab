@@ -19,6 +19,8 @@ class Slab(models.Model):
 
 class Sticker(models.Model):
     slab = models.ForeignKey(Slab, on_delete=models.PROTECT)
+    position_x = models.IntegerField()
+    position_y = models.IntegerField()
     name = models.CharField(max_length=100)
     color = models.CharField(max_length=8)
     text = models.CharField(max_length=500, null=True, blank=True)

@@ -57,18 +57,20 @@ def bookmark(request, slab_id):
 def create_sticker(request):
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
+    sticker_x = request.POST['sticker_x']
+    sticker_y = request.POST['sticker_y']
     sticker_name = request.POST['sticker_name']
     sticker_color = request.POST['sticker_color']
     sticker_type = request.POST['sticker_type']
     if (sticker_type == 'text'):
         sticker_text = request.POST['sticker_text']
-        sticker = Sticker(slab=sticker_slab, name=sticker_name, color=sticker_color, text=sticker_text, link=None, image=None)
+        sticker = Sticker(slab=sticker_slab, position_x=sticker_x, position_y=sticker_y, name=sticker_name, color=sticker_color, text=sticker_text, link=None, image=None)
     elif (sticker_type == 'link'):
         sticker_link = request.POST['sticker_link']
-        sticker = Sticker(slab=sticker_slab, name=sticker_name, color=sticker_color, text=None, link=sticker_link, image=None)
+        sticker = Sticker(slab=sticker_slab, position_x=sticker_x, position_y=sticker_y, name=sticker_name, color=sticker_color, text=None, link=sticker_link, image=None)
     elif (sticker_type == 'image'):
         sticker_image = request.FILES['sticker_image']
-        sticker = Sticker(slab=sticker_slab, name=sticker_name, color=sticker_color, text=None, link=None, image=sticker_image)
+        sticker = Sticker(slab=sticker_slab, position_x=sticker_x, position_y=sticker_y, name=sticker_name, color=sticker_color, text=None, link=None, image=sticker_image)
     sticker.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 
@@ -106,6 +108,10 @@ def edit_slab(request):
         sticker_slab.background = "/slab/static/slab/images/background_abstract.jpg"
     elif wallpaper == 'gradient':
         sticker_slab.background = "/slab/static/slab/images/background_gradient.jpg"
+    elif wallpaper == 'waterlily':
+        sticker_slab.background = "/slab/static/slab/images/background_waterlily.jpg"
+    elif wallpaper == 'city':
+        sticker_slab.background = "/slab/static/slab/images/background_city.jpg"
     sticker_slab.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 

@@ -102,9 +102,11 @@ i.icon-red {
     text-shadow: 2px 2px Lime;
     width: 100%;
 }
-footer {
+.footer_buttons {
     position: fixed;
     bottom: 0px;
+    margin-left: 1%;
+    padding-left: 1%;
 }
 #loggedin_account {
     margin-left: 10%;
@@ -122,9 +124,16 @@ footer {
     margin-right: 10%;
     border-style: outset;
 }
-#sticker_area {
+#slab_header {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-bottom: 2px solid white;
+}
+#slab_sticker_area {
     width: 100%;
     height: 500px;
+    padding: 1%;
 }
 #sticker_header {
     padding-left: 2%;
