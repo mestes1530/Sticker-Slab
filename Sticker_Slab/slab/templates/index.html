@@ -7,17 +7,24 @@
     </center>
 </h1>
 <div class = "main_div">
+    <div id="loggedin_account" name="loggedin_account" class="row">
+        <h5>
+            {{user.username}}
+            <a class="waves-effect waves-light btn-small green right" href="{% url 'slab:profile' %}"><i class="material-icons left">account_box</i>Profile</a>
+        </h5>
+    </div>
     <div id="landing_card" name="landing_card" class="card">
         <div class="card-image">
             <img src="{% static 'slab/images/sticker_slab.jpg' %}">
-            <span class="card-title">Getting Started</span>
+            <span class="card-title">About Sticker Slab</span>
         </div>
         <div class="card-content">
             <p>Sticker Slab is a simple social media that...</p>
         </div>
         <div class="card-action">
-            <center><a style="color:lime;" href="{% url 'slab:register' %}"><i class="material-icons">account_box</i> Sign Up/In </a></center>
+            <center><a style="color:lime;" href="{% url 'slab:info' %}">More About Sticker Slab</a></center>
         </div>
     </div>
 </div>
+<br>
 {% endblock %}

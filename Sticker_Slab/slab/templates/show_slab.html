@@ -5,27 +5,185 @@
         background-image: url('{{slab.get_background}}') !important;
     }
 </style>
-<h1>{{slab.name}}</h1>
+<div id="slab_header" name="slab_header">
+    <h1>{{slab.name}}</h1>
+</div>
+<hr>
+<!-- Add Sticker Modal -->
+<div id="add_sticker_modal" class="modal">
+    <div class="modal-content">
+        <span class="flow-text">
+            <form action="{% url 'slab:create_sticker' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" name="slab_id" value="{{slab.id}}"/>
+                <table>
+                    <tr>
+                        <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
+                    </tr>
+                    <tr>
+                        <td>Sticker Name:</td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="sticker_name" name="sticker_name" type="text" class="validate">
+                                <label for="sticker_name">Sticker Name</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sticker Color:</td>
+                        <td>
+                            <label>Sticker Color</label>
+                            <select name="sticker_color" class="browser-default">
+                                <option value="" disabled selected>Choose Color</option>
+                                <option value="#424242">Black</option>
+                                <option value="#42a5f5">Blue</option>
+                                <option value="#ffeb3b">Yellow</option>
+                                <option value="#f44336">Red</option>
+                                <option value="#66bb6a">Green</option>
+                                <option value="#ffa726">Orange</option>
+                                <option value="#ba68c8">Purple</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sticker Type:</td>
+                        <td>
+                            <label>Sticker Type</label>
+                            <select id="sticker_type" name="sticker_type" class="browser-default">
+                                <option value="" disabled selected>Choose Type</option>
+                                <option value="text">Text Sticker</option>
+                                <option value="link">Link Sticker</option>
+                                <option value="image">Image Sticker</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr id="sticker_text_row" name="sticker_text_row">
+                        <td><i class="material-icons">assignment</i> Post Text:</td>
+                        <td>
+                            <div class="input-field col s6">
+                              <textarea id="sticker_text" name="sticker_text" class="materialize-textarea"></textarea>
+                              <label for="sticker_text">Text content goes here</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="sticker_link_row" name="sticker_link_row">
+                        <td><i class="material-icons">link</i> Post Link:</td>
+                        <td>
+                            <div class="input-field col s6">
+                                <input id="sticker_link" name="sticker_link" type="text" class="validate">
+                                <label for="sticker_link">Paste URL link here</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr id="sticker_image_row" name="sticker_image_row">
+                        <td><font><i class="material-icons">image</i> Post Image:</font></td>
+                        <td>
+                            <div class="input-field col s6">
+                                <div class="file-field input-field">
+                                  <div class="btn green">
+                                    <span>Upload</span>
+                                    <input type="file" name="sticker_image" accept="image/*"/>
+                                  </div>
+                                  <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" name="sticker_image2" placeholder="Select the image file you want to use">
+                                  </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan ="2"><center><button class="btn btn-primary green" type="submit"><i class="material-icons left">save</i> Save Sticker</button></center></td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+    </div>
+</div>
+<!-- Delete Sticker Modal -->
+<div id="delete_sticker_modal" class="modal">
+    <div class="modal-content">
+        <div id="delete_stickers" name="delete_stickers" class="white_list_box">
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Delete Stickers:</h4></li>
+            {% for sticker in slab.sticker_set.all %}
+            <li class="collection-item"><a href="{% url 'slab:delete_sticker' sticker.id %}"><font>{{sticker.name}}</font><div class="secondary-content"><i class="material-icons icon-red">delete</i></div></a></li>
+            {% endfor %}
+        </ul>
+        </div>
+        <br>
+        <div id="delete_slab" name="delete_slab" class="black_box">
+            <h4>Delete Slab:</h4>
+            <hr>
+            <font>Deleting a slab will delete it and all of it's stickers, making it impossible to recover their data. Make sure this is what you want before you press the button bellow to delete the slab titled "{{slab.name}}".</font>
+            <center><a class="waves-effect waves-light btn red" href="{% url 'slab:delete_slab' slab.id %}"><i class="material-icons left">delete</i>Delete Slab</a></center>
+        </div>
+    </div>
+</div>
+<!-- Edit Slab Modal -->
+<div id="edit_slab_modal" class="modal">
+    <div class="modal-content">
+        <span class="flow-text">
+            <form action="{% url 'slab:edit_slab' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="slab_id" value="{{slab.id}}"/>
+                <table>
+                    <tr>
+                        <th colspan="2"><center><h4>Edit Slab</h4></center></th>
+                    </tr>
+                    <tr>
+                        <td><i class="material-icons">share</i> Share Slab Link:</td>
+                        <td>
+                            <a class="waves-effect waves-light btn green"><i class="material-icons left">share</i>Copy Link</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="material-icons left">wallpaper</i> Change Slab Wallpaper:</td>
+                        <td>
+                            <label>Slab Wallpaper</label>
+                            <select name="wallpaper" class="browser-default">
+                                <option value="" disabled selected>Choose Wallpaper</option>
+                                <option value="default">Default Wallpaper</option>
+                                <option value="space">Space Wallpaper</option>
+                                <option value="triangle">Triangle Wallpaper</option>
+                                <option value="abstract">Abstract Wallpaper</option>
+                                <option value="gradient">Gradient Wallpaper</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><i class="material-icons left">format_color_text</i> Slab Font Settings:</td>
+                        <td>
+                            <h5>TBA</h5>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan ="2"><center><button class="btn btn-primary green" type="submit"><i class="material-icons left">save</i> Save Settings</button></center></td>
+                    </tr>
+                </table>
+            </form>
+        </span>
+    </div>
+</div>
 <div class="grid-example main_div">
     <div id="sticker_area" name="sticker_area" onclick="showCoords(event)">
-    {% for sticker in slab.sticker_set.all %}
-    <a class="btn-floating btn-large tooltipped waves-effect waves-light" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}" style="background-color:{{sticker.color}}">
-        {% if sticker.is_text %}
-            <i class="material-icons">assignment</i>
-        {% elif sticker.is_link %}
-            <i class="material-icons">link</i>
-        {% else %}
-            <i class="material-icons">image</i>
-        {% endif %}
-    </a>
-    {% endfor %}
-    <p id="demo"></p>
+        {% for sticker in slab.sticker_set.all %}
+        <a class="btn-floating btn-large tooltipped waves-effect waves-light" href="{% url 'slab:show_sticker' sticker.id %}" data-position="top" data-tooltip="{{sticker.name}}" style="background-color:{{sticker.color}}">
+            {% if sticker.is_text %}
+                <i class="material-icons">assignment</i>
+            {% elif sticker.is_link %}
+                <i class="material-icons">link</i>
+            {% else %}
+                <i class="material-icons">image</i>
+            {% endif %}
+        </a>
+        {% endfor %}
+        <p id="demo"></p>
     </div>
     {% if slab.user.id == user.id %}
     <footer id="user_slab_buttons" name="user_slab_buttons">
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:add' slab.id %}"><i class="material-icons">add_to_photos</i>Add</a>
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:delete' slab.id %}"><i class="material-icons">delete</i>Delete</a>
-        <a class="waves-effect waves-light btn-small blue" href="{% url 'slab:edit' slab.id %}"><i class="material-icons">edit</i>Edit</a>
+        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#add_sticker_modal"><i class="material-icons">add_to_photos</i>Add</a>
+        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#delete_sticker_modal"><i class="material-icons">delete</i>Delete</a>
+        <a class="waves-effect waves-light btn-small blue modal-trigger" href="#edit_slab_modal"><i class="material-icons">edit</i>Edit</a>
     </footer>
     {% else %}
     <footer id="guest_slab_button" name="guest_slab_button">
@@ -34,21 +192,51 @@
     {% endif %}
 </div>
 
-<!-- Get X and Y coordinates -->
 <script type="text/javascript">
-function showCoords(event) {
-    var cX = event.clientX;
-    var sX = event.screenX;
-    var cY = event.clientY;
-    var sY = event.screenY;
-    var coords1 = "client - X: " + cX + ", Y coords: " + cY;
-    var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
-    document.getElementById("demo").innerHTML = coords1 + "<br>" + coords2;
-}
-</script>
 
-<!-- Materialize tooltip code -->
-<script type="text/javascript">
+    // <!-- Changes input field depending on sticker type -->
+    let sticker_type = document.querySelector('#sticker_type')
+    let sticker_text_row = document.querySelector('#sticker_text_row')
+    let sticker_image_row = document.querySelector('#sticker_image_row')
+    sticker_type.onchange = function() {
+        sticker_text_row.style.display = 'none'
+        sticker_link_row.style.display = 'none'
+        sticker_image_row.style.display = 'none'
+
+        var type = document.querySelector("#sticker_type").value;
+        if (type === "text") {
+            sticker_text_row.style.display = ''
+        }
+        else if (type === "link") {
+            sticker_link_row.style.display = ''
+        }
+        else if (type === "image") {
+            sticker_image_row.style.display = ''
+        }
+    }
+
+    sticker_type.onchange()
+
+
+
+    // <!-- Modals Scripts -->
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {});
+    });
+
+    // <!-- Get X and Y coordinates -->
+    function showCoords(event) {
+        var cX = event.clientX;
+        var sX = event.screenX;
+        var cY = event.clientY;
+        var sY = event.screenY;
+        var coords1 = "client - X: " + cX + ", Y coords: " + cY;
+        var coords2 = "screen - X: " + sX + ", Y coords: " + sY;
+        document.getElementById("demo").innerHTML = coords1 + "<br>" + coords2;
+    }
+    // <!-- Materialize tooltip code -->
+
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.tooltipped');
         var instances = M.Tooltip.init(elems, {});

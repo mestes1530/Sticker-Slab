@@ -54,10 +54,6 @@ def bookmark(request, slab_id):
     slab.bookmarkings.add(user)
     return render(request, 'show_slab.html', {'slab': slab})
 
-def add(request, slab_id):
-    slab = Slab.objects.get(pk=slab_id)
-    return render(request, 'add.html', {'slab': slab})
-
 def create_sticker(request):
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
@@ -83,10 +79,6 @@ def show_sticker(request, sticker_id):
     else:
         return render(request, 'show_sticker.html', {'sticker': sticker})
 
-def delete(request, slab_id):
-    slab = Slab.objects.get(pk=slab_id)
-    return render(request, 'delete.html', {'slab': slab})
-
 def delete_slab(request, slab_id):
     slab = Slab.objects.get(pk=slab_id)
     stickers = Sticker.objects.filter(slab_id=slab_id)
@@ -98,14 +90,9 @@ def delete_sticker(request, sticker_id):
     sticker = Sticker.objects.get(pk=sticker_id)
     slab_id = sticker.slab.id
     sticker.delete()
-    return HttpResponseRedirect(reverse('slab:delete', kwargs={'slab_id':slab_id}))
-
-def edit(request, slab_id):
-    slab = Slab.objects.get(pk=slab_id)
-    return render(request, 'edit.html', {'slab': slab})
+    return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 
 def edit_slab(request):
-    print(request.POST)
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
     wallpaper = request.POST['wallpaper']
