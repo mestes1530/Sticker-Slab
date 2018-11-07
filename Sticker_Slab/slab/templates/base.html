@@ -1,5 +1,4 @@
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'slab/style.css' %}"/>
     <!-- Google Fonts CDN -->
     <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice" rel="stylesheet">
     <!-- Materialize CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -17,19 +15,33 @@
     <title>Sticker Slab</title>
 </head>
 <body>
-    <!-- Start/Left of NavBar -->
+    <!-- NAV BAR (CPU)-->
     <nav>
         <div class="nav-wrapper">
+            <!-- WEBSITE NAME -->
             <a id="site_name" name="site_name" href="{% url 'slab:index' %}" class="brand-logo">
                 {% load static %}
                 Sticker <img id="logo" src="{% static 'slab/images/logo.png' %}" width="15" height="20" class="d-inline-block align-top" alt="Sticker Slab">Slab
             </a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
+                <!-- HOME TAB -->
                 <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
-                <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
+                <!-- PROFILE TAB -->
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'slab:profile' %}">👤Profile</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link">👤Profile</a>
+                </li>
+                {% endif %}
+                <!-- BROWSE TAB -->
                 <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
+                <!-- INFO TAB -->
                 <li><a href="{% url 'slab:info' %}">ℹ️Info</a></li>
+                <!-- LOGIN/OUT TAB -->
                 {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'slab:signout_user' %}">🔒Logout</a>
@@ -42,10 +54,18 @@
             </ul>
         </div>
     </nav>
-    <!-- Right Side of NavBar -->
+    <!-- NAV BAR (MOBILE) -->
     <ul class="sidenav" id="mobile-demo">
         <li><a href="{% url 'slab:index' %}">🏠Home</a></li>
-        <li><a href="{% url 'slab:profile' %}">👤Profile</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'slab:profile' %}">👤Profile</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link">👤Profile</a>
+        </li>
+        {% endif %}
         <li><a href="{% url 'slab:browse' %}">🔍Browse</a></li>
         <li><a href="{% url 'slab:info' %}">ℹ️Info</a></li>
         {% if user.is_authenticated %}
@@ -58,7 +78,6 @@
         </li>
         {% endif %}
     </ul>
-    <!-- End of NavBar -->
 {% block content %}
 {% endblock %}
 </body>

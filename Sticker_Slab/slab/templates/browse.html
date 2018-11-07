@@ -2,30 +2,30 @@
 {% block content %}
 <h1>Search Slabs</h1>
 <div class="main_div">
-
-
-  <div>
-    <input type="text" id="search_bar" name="search_bar" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-    <table id="myTable" class="black_box">
+  <div id="search_area" name="search_area">
+    <input type="text" id="search_bar" name="search_bar" placeholder="🔍Search Slabs" title="Type in a name">
+    <table id="search_results" name="search_results" class="black_box">
       <tr class="header">
-        <th>Slab Link</th>
-        <th>Slab Name</th>
-        <th>Slab Creator</th>
+        <th><h4>Slab Name</h4></th>
+        <th><h4>Slab Creator</h4></th>
+        <th><h4>Slab Link</h4></th>
       </tr>
+      {% for slab in slabs %}
       <tr>
-        <td>
-          {% for slab in slabs %}
-          <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a>
-          {% endfor %}
+        <td class = "search_text">
+          {{slab.name}}
+        </td>
+        <td class = "search_text">
+          {{slab.user.username}}
         </td>
         <td>
-          {% for slab in slabs %}
-          <p>{{slab.user.username}}</p>
-          {% endfor %}
+          <a href="{% url 'slab:show_slab' slab.id %}" class="waves-effect waves-light btn-small blue"><i class="material-icons right">input</i> See Slab</a>
         </td>
       </tr>
+      {% endfor %}
     </table>
   </div>
+  <br>
   <div id="all_public_slabs" name="all_public_slabs" class="black_box">
     <center>
       <h4>All Public Slabs</h4>
@@ -35,36 +35,15 @@
       {% endfor %}
     </center>
   </div>
-  <div class="carousel carousel-slider center">
-    <div class="carousel-fixed-item center">
-      <a class="btn waves-effect white grey-text darken-text-2">button</a>
-    </div>
-    <div class="carousel-item red white-text" href="#one!">
-      <h2>First Panel</h2>
-      <p class="white-text">This is your first panel</p>
-    </div>
-    <div class="carousel-item amber white-text" href="#two!">
-      <h2>Second Panel</h2>
-      <p class="white-text">This is your second panel</p>
-    </div>
-    <div class="carousel-item green white-text" href="#three!">
-      <h2>Third Panel</h2>
-      <p class="white-text">This is your third panel</p>
-    </div>
-    <div class="carousel-item blue white-text" href="#four!">
-      <h2>Fourth Panel</h2>
-      <p class="white-text">This is your fourth panel</p>
-    </div>
-  </div>
 </div>
 <script type="text/javascript">
-  // Search
+  // SEARCH BAR FUNCTIONALITY
   let search_bar = document.querySelector('#search_bar')
-  function myFunction() {
+  search_bar.onkeyup = function() {
     var input, filter, table, tr, td, i;
-    input = document.getElementById("myInput");
+    input = document.getElementById("search_bar");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("search_results");
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[0];
@@ -77,15 +56,5 @@
       }
     }
   }
-
-  // Carousel
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.carousel');
-    var instances = M.Carousel.init(elems, {});
-  });
-  var instance = M.Carousel.init({
-    fullWidth: true,
-    indicators: true
-  });
 </script>
 {% endblock %}

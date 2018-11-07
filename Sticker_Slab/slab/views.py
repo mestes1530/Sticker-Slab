@@ -40,7 +40,7 @@ def create_slab(request):
     slab_creator = request.user
     slab_name = request.POST['slab_name']
     slab_privacy = 'private_slab' in request.POST
-    slab = Slab(user=slab_creator, name=slab_name, private=slab_privacy)
+    slab = Slab(user=slab_creator, name=slab_name, private=slab_privacy, font='Fredoka One')
     slab.save()
     return HttpResponseRedirect(reverse('slab:profile'))
 
@@ -112,6 +112,8 @@ def edit_slab(request):
         sticker_slab.background = "/slab/static/slab/images/background_waterlily.jpg"
     elif wallpaper == 'city':
         sticker_slab.background = "/slab/static/slab/images/background_city.jpg"
+    font = request.POST['font']
+    sticker_slab.font = font
     sticker_slab.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
 

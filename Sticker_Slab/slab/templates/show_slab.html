@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <style>
+    @import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Fredoka+One|Grand+Hotel|Indie+Flower|Lateef|Nanum+Brush+Script|Spicy+Rice');
     body {
         background-image: url('{{slab.get_background}}') !important;
+        font-family: '{{slab.font}}', cursive !important;
     }
 </style>
 <!-- Add Sticker Modal -->
@@ -16,7 +18,9 @@
                 <input type="hidden" name="sticker_y" id="sticker_y" value="0"/>
                 <table>
                     <tr>
-                        <th colspan="2"><center><h4>Add A New Sticker</h4></center></th>
+                        <th colspan="2">
+                            <center><h4>Add A New Sticker</h4></center>
+                        </th>
                     </tr>
                     <tr>
                         <td>Sticker Name:</td>
@@ -156,8 +160,12 @@
                            <label>Slab Font</label>
                             <select name="font" class="browser-default">
                                 <option value="" disabled selected>Choose Font</option>
-                                <option value="default">Default Font</option>
-                                <option value="spicy_rice">Spicy Rice</option>
+                                <option value="Fredoka One">Default</option>
+                                <option value="Spicy Rice">Spicy Rice</option>
+                                <option value="Lateef">Lateef</option>
+                                <option value="Grand Hotel">Grand Hotel</option>
+                                <option value="Berkshire Swash">Berkshire Swash</option>
+                                <option value="Nanum Brush Script">Nanum Brush</option>
                             </select>
                         </td>
                     </tr>

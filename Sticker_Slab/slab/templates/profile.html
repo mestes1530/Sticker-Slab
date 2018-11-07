@@ -8,7 +8,7 @@
                 {% csrf_token %}
                 <table>
                     <thead>
-                    <th colspan="2"><h4>New Slab:</h4></th>
+                    <th colspan="2"><h4 style="color:white;">New Slab:</h4></th>
                     </thead>
                     <tbody>
                         <tr>
@@ -51,8 +51,8 @@
 <div id="profile_settings" name="profile_settings" class="footer_buttons">
     <p id="demo"></p>
     <footer>
-        <a class="dropdown-trigger waves-effect waves-light btn-small blue" data-target='dropdown1'>
-            <i class="material-icons">settings</i> Account Settings</a>
+        <a class="dropdown-trigger waves-effect waves-light btn blue" data-target='dropdown1'>
+            <i class="material-icons">settings</i> Profile Settings</a>
         <ul id='dropdown1' class='dropdown-content'>
             <li><a href="{% url 'slab:bookmarked' %}" class="blue-text"><i class="material-icons">book</i> Bookmarks</a></li>
             <li><a href="{% url 'slab:switch_users' %}" class="blue-text"><i class="material-icons">loop</i> Switch User</a></li>

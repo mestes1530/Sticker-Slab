@@ -6,7 +6,8 @@ class Slab(models.Model):
     name = models.CharField(max_length=100)
     private = models.BooleanField(default=False)
     bookmarkings = models.ManyToManyField(User, related_name='bookmarked_slabs', blank=True)
-    background = models.ImageField(null=True, blank=True)
+    background = models.ImageField()
+    font = models.CharField(max_length=100)
 
     def get_background(self):
         if self.background == '':
