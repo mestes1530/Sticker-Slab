@@ -135,7 +135,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><i class="material-icons left">wallpaper</i> Change Slab Wallpaper:</td>
+                        <td><i class="material-icons left">wallpaper</i> Change Wallpaper:</td>
                         <td>
                             <label>Slab Wallpaper</label>
                             <select name="wallpaper" class="browser-default">
@@ -153,7 +153,12 @@
                     <tr>
                         <td><i class="material-icons left">format_color_text</i> Slab Font Settings:</td>
                         <td>
-                            <h5>TBA</h5>
+                           <label>Slab Font</label>
+                            <select name="font" class="browser-default">
+                                <option value="" disabled selected>Choose Font</option>
+                                <option value="default">Default Font</option>
+                                <option value="spicy_rice">Spicy Rice</option>
+                            </select>
                         </td>
                     </tr>
                     <tr>
@@ -220,8 +225,8 @@
         listen_add_sticker = false
 
         let rect = e.target.getBoundingClientRect();
-        sticker_x.value = Math.floor(e.clientX - rect.left)
-        sticker_y.value = Math.floor(e.clientY - rect.top)
+        sticker_x.value = Math.floor(e.clientX)
+        sticker_y.value = Math.floor(e.clientY)
 
         var instance = M.Modal.getInstance(document.querySelector('#add_sticker_modal'));
 
