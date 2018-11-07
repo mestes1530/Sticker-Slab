@@ -2,14 +2,38 @@
 {% block content %}
 <h1>Search Slabs</h1>
 <div class="main_div">
-  <div id="search_bar" name="search_bar" class="nav-wrapper">
-    <form>
-      <div class="input-field">
-        <input id="search" type="search" required>
-        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-        <i class="material-icons">close</i>
-      </div>
-    </form>
+
+
+  <div>
+    <input type="text" id="search_bar" name="search_bar" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+    <table id="myTable" class="black_box">
+      <tr class="header">
+        <th>Slab Link</th>
+        <th>Slab Name</th>
+        <th>Slab Creator</th>
+      </tr>
+      <tr>
+        <td>
+          {% for slab in slabs %}
+          <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a>
+          {% endfor %}
+        </td>
+        <td>
+          {% for slab in slabs %}
+          <p>{{slab.user.username}}</p>
+          {% endfor %}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div id="all_public_slabs" name="all_public_slabs" class="black_box">
+    <center>
+      <h4>All Public Slabs</h4>
+      <hr> |
+      {% for slab in slabs %}
+      <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a> |
+      {% endfor %}
+    </center>
   </div>
   <div class="carousel carousel-slider center">
     <div class="carousel-fixed-item center">
@@ -32,24 +56,33 @@
       <p class="white-text">This is your fourth panel</p>
     </div>
   </div>
-  <br>
-  <div id="all_public_slabs" name="all_public_slabs" class="black_box">
-    <center>
-      <h4>All Public Slabs</h4>
-      <hr> |
-      {% for slab in slabs %}
-      <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a> |
-      {% endfor %}
-    </center>
-  </div>
-  <br>
 </div>
 <script type="text/javascript">
+  // Search
+  let search_bar = document.querySelector('#search_bar')
+  function myFunction() {
+    var input, filter, table, tr, td, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  // Carousel
   document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.carousel');
     var instances = M.Carousel.init(elems, {});
   });
-
   var instance = M.Carousel.init({
     fullWidth: true,
     indicators: true

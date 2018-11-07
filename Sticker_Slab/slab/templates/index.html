@@ -8,10 +8,18 @@
 </h1>
 <div class = "main_div">
     <div id="loggedin_account" name="loggedin_account" class="row">
+        {% if user.is_authenticated %}
         <h5>
-            {{user.username}}
+            Welcome {{user.username}}
+            <a class="waves-effect waves-light btn-small green right" href="{% url 'slab:bookmarked' %}"><i class="material-icons left">book</i>Bookmarks</a>
             <a class="waves-effect waves-light btn-small green right" href="{% url 'slab:profile' %}"><i class="material-icons left">account_box</i>Profile</a>
         </h5>
+        {% else %}
+        <h5>
+            Get Started
+            <a class="waves-effect waves-light btn-small green right" href="{% url 'slab:register' %}"><i class="material-icons left">forward</i>Sign In/Up</a>
+        </h5>
+        {% endif %}
     </div>
     <div id="landing_card" name="landing_card" class="card">
         <div class="card-image">

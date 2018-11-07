@@ -23,9 +23,6 @@ h4 {
 .nav-wrapper {
     background: linear-gradient(to right, Lime, Green);
 }
-#search_bar {
-    background: linear-gradient(to right, AliceBlue, LightSteelBlue);
-}
 #site_title {
     color: white;
     font-weight: bold;
@@ -128,7 +125,7 @@ i.icon-red {
     display: flex;
     flex-direction: row;
     background-color: rgba(0, 0, 0, 0.4);
-    border-bottom: 2px solid white;
+    border: 2px solid white;
 }
 #slab_sticker_area {
     width: 100%;
