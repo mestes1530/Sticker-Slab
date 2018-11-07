@@ -132,7 +132,7 @@
                     <tr>
                         <td><i class="material-icons">share</i> Share Slab Link:</td>
                         <td>
-                            <a class="waves-effect waves-light btn green"><i class="material-icons left">share</i>Copy Link</a>
+                            <a id="copy_link" name="copy_link" class="waves-effect waves-light btn green"><i class="material-icons left">share</i>Copy Link</a>
                         </td>
                     </tr>
                     <tr>
@@ -184,8 +184,9 @@
     {% endfor %}
     <p id="demo" name="demo"></p>
 </div>
+<br>
 <!-- Slab Footer -->
-<div id="slab_footer" name="slab_footer" class="footer_button">
+<div id="slab_footer" name="slab_footer" class="footer_buttons">
     {% if slab.user.id == user.id %}
     <footer id="user_slab_buttons" name="user_slab_buttons">
         <a id="add_sticker_bt" class="waves-effect waves-light btn blue modal-trigger" href="#"><i class="material-icons">add_to_photos</i>Add</a>
@@ -194,7 +195,7 @@
     </footer>
     {% else %}
     <footer id="guest_slab_button" name="guest_slab_button">
-        <a class="waves-effect waves-light btn blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark</a>
+        <a class="waves-effect waves-light btn blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark Slab</a>
     </footer>
     {% endif %}
 </div>
@@ -230,10 +231,8 @@
 
         instance.open()
 
-
-
-
     }
+
 
     // <!-- Changes input field depending on sticker type -->
     let sticker_type = document.querySelector('#sticker_type')
