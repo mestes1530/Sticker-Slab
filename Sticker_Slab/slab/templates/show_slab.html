@@ -151,7 +151,13 @@
                     <tr>
                         <td><i class="material-icons">share</i> Share Slab Link:</td>
                         <td>
-                            <a id="copy_link" name="copy_link" class="waves-effect waves-light btn green"><i class="material-icons left">share</i>Copy Link</a>
+                            <div>
+                                <span>
+                                    <a id="copy_button" style="width:100%;" class="waves-effect waves-light btn-small green"><i class="material-icons left">share</i> Copy Link</a>
+                                    <textarea id="copied_url" rows="1" cols="30"></textarea>
+                                </span>
+
+                            </div>
                         </td>
                     </tr>
                     <!-- CHANGE WALLPAPER -->
@@ -228,17 +234,17 @@
     <!-- SHOW BOOKMARK BUTTON IF SOMEONE ELSE'S SLAB -->
     {% else %}
     <footer id="guest_slab_button" name="guest_slab_button">
+        {% if user.is_authenticated %}
         <a class="waves-effect waves-light btn blue" href="{% url 'slab:bookmark' slab.id %}"><i class="material-icons">book</i>Bookmark Slab</a>
+        {% endif %}
     </footer>
     {% endif %}
 </div>
 <!-- SLAB RELATED JAVASCRIPTS -->
 <script type="text/javascript">
-
+    // SETS THE SLAB'S FONT AND BACKGROUND
     document.querySelector('#font_ddl').value = '{{slab.font}}';
     document.querySelector('#wallpaper_ddl').value = '{{slab.background}}';
-
-
     // START STICKER MAKING WITH TOAST ALERT
     let add_sticker_bt = document.querySelector('#add_sticker_bt')
     if (add_sticker_bt) {
@@ -247,10 +253,18 @@
             listen_add_sticker = true
         }
     }
+    // COPIES CURRENT SLAB LINK
+    let copy_button = document.querySelector('#copy_button')
+    copy_button.onclick = function() {
+        var Url = document.getElementById("copied_url");
+        Url.innerHTML = window.location.href;
+        console.log(Url.innerHTML)
+        Url.select();
+        document.execCommand("copy");
+    }
     let sticker_x = document.querySelector('#sticker_x')
     let sticker_y = document.querySelector('#sticker_y')
     let listen_add_sticker = false
-
     // RECEIVES X AND Y CLICK COORDINATES AND PUTS STICKER THERE
     let slab_sticker_area = document.querySelector('#slab_sticker_area')
     slab_sticker_area.onclick = function(e) {

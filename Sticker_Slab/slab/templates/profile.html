@@ -62,18 +62,35 @@
             <li><a href="{% url 'slab:bookmarked' %}" class="blue-text"><i class="material-icons">book</i> Bookmarks</a></li>
             <li><a href="{% url 'slab:switch_users' %}" class="blue-text"><i class="material-icons">loop</i> Switch User</a></li>
             <li><a href="#!" class="blue-text"><i class="material-icons">border_color</i> Edit User</a></li>
-            <li><a onclick="deleteAccount()" class="red-text"><i class="material-icons">delete_forever</i> Delete User</a></li>
+            <li><a href="#delete_profile_modal" class="red-text modal-trigger"><i class="material-icons">delete_forever</i> Delete User</a></li>
             <li class="divider" tabindex="-1" class = "blue-text"></li>
-            <li><a href="#!" class="blue-text"><i class="material-icons">expand_more</i> Close Settings</li>
+            <li><a href="#!" class="blue-text"><i class="material-icons">expand_more</i> Close Settings</a></li>
         </ul>
     </footer>
 </div>
+<!-- DELETE PROFILE MODAL -->
+<div id="delete_profile_modal" class="modal">
+    <div class="modal-content">
+      <h4>Deleting Your Profile</h4>
+      <p>Deleting your profile will also delete all stickers, slabs and related data; none of which can ever be recovered. Are you still sure you want to delete your profile?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="{% url 'slab:delete_user' %}" class="modal-close waves-effect waves-green btn-flat">Yes</a>
+      <a class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+    </div>
+</div>
 <!-- DROPDOWN MENU JAVASCRIPT -->
 <script type="text/javascript">
-    // MATERIALIZE DROPDOWN CDN
+    // MATERIALIZE DROPDOWN
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems, {});
+    });
+
+    // MATERALIZE MODAL
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems, {});
     });
 
     // ALERT TO DOUBLE CHECK DELETING ACCOUNT

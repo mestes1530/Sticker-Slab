@@ -34,7 +34,9 @@ def switch_users(request):
     return render(request, 'register.html', {})
 
 def delete_user(request):
-    user = request.user
+    UserSocialAuth.objects.filter(user=request.user).delete()
+    User.objects.filter(pk=request.user.pk).update(is_active=False, email=None)
+    return HttpResponseRedirect(reverse('django.contrib.auth.views.logout'))
 
 def create_slab(request):
     slab_creator = request.user
