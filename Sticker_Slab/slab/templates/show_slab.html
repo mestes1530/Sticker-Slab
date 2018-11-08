@@ -159,15 +159,15 @@
                         <td><i class="material-icons left">wallpaper</i> Change Wallpaper:</td>
                         <td>
                             <label>Slab Wallpaper</label>
-                            <select name="wallpaper" class="browser-default">
-                                <option value="" disabled selected>Choose Wallpaper</option>
-                                <option value="default">Default Wallpaper</option>
-                                <option value="space">Space Wallpaper</option>
-                                <option value="triangle">Triangle Wallpaper</option>
-                                <option value="abstract">Abstract Wallpaper</option>
-                                <option value="gradient">Gradient Wallpaper</option>
-                                <option value="waterlily">Water Lily Wallpaper</option>
-                                <option value="city">City Wallpaper</option>
+                            <select id="wallpaper_ddl" name="wallpaper" class="browser-default">
+                                <option value="" disabled>Choose Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_default.jpg">Default Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_space.jpg">Space Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_triangle.png">Triangle Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_abstract.jpg">Abstract Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_gradient.jpg">Gradient Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_waterlily.jpg">Water Lily Wallpaper</option>
+                                <option value="/slab/static/slab/images/background_city.jpg">City Wallpaper</option>
                             </select>
                         </td>
                     </tr>
@@ -176,8 +176,8 @@
                         <td><i class="material-icons left">format_color_text</i> Slab Font Settings:</td>
                         <td>
                            <label>Slab Font</label>
-                            <select name="font" class="browser-default">
-                                <option value="" disabled selected>Choose Font</option>
+                            <select id="font_ddl" name="font" class="browser-default">
+                                <option value="" disabled>Choose Font</option>
                                 <option value="Fredoka One">Default</option>
                                 <option value="Spicy Rice">Spicy Rice</option>
                                 <option value="Lateef">Lateef</option>
@@ -234,23 +234,31 @@
 </div>
 <!-- SLAB RELATED JAVASCRIPTS -->
 <script type="text/javascript">
+
+    document.querySelector('#font_ddl').value = '{{slab.font}}';
+    document.querySelector('#wallpaper_ddl').value = '{{slab.background}}';
+
+
     // START STICKER MAKING WITH TOAST ALERT
     let add_sticker_bt = document.querySelector('#add_sticker_bt')
+    if (add_sticker_bt) {
+        add_sticker_bt.onclick = function() {
+            M.toast({html: 'Click where on the Slab you want the sticker posted.'})
+            listen_add_sticker = true
+        }
+    }
     let sticker_x = document.querySelector('#sticker_x')
     let sticker_y = document.querySelector('#sticker_y')
     let listen_add_sticker = false
-    add_sticker_bt.onclick = function() {
-        M.toast({html: 'Click where on the Slab you want the sticker posted.'})
-        listen_add_sticker = true
-    }
+
     // RECEIVES X AND Y CLICK COORDINATES AND PUTS STICKER THERE
     let slab_sticker_area = document.querySelector('#slab_sticker_area')
     slab_sticker_area.onclick = function(e) {
         if (!listen_add_sticker) return
         listen_add_sticker = false
         let rect = e.target.getBoundingClientRect();
-        sticker_x.value = Math.floor(e.clientX)
-        sticker_y.value = Math.floor(e.clientY)
+        sticker_x.value = Math.floor(e.clientX - rect.left + 2)
+        sticker_y.value = Math.floor(e.clientY - rect.top + 2)
         var instance = M.Modal.getInstance(document.querySelector('#add_sticker_modal'));
         instance.open()
     }

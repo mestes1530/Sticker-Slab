@@ -98,21 +98,8 @@ def edit_slab(request):
     slab_id = request.POST['slab_id']
     sticker_slab = Slab.objects.get(pk=slab_id)
     wallpaper = request.POST['wallpaper']
-    if wallpaper == 'default':
-        sticker_slab.background = "/slab/static/slab/images/background_default.jpg"
-    elif wallpaper == 'space':
-        sticker_slab.background = "/slab/static/slab/images/background_space.jpg"
-    elif wallpaper == 'triangle':
-        sticker_slab.background = "/slab/static/slab/images/background_triangle.png"
-    elif wallpaper == 'abstract':
-        sticker_slab.background = "/slab/static/slab/images/background_abstract.jpg"
-    elif wallpaper == 'gradient':
-        sticker_slab.background = "/slab/static/slab/images/background_gradient.jpg"
-    elif wallpaper == 'waterlily':
-        sticker_slab.background = "/slab/static/slab/images/background_waterlily.jpg"
-    elif wallpaper == 'city':
-        sticker_slab.background = "/slab/static/slab/images/background_city.jpg"
     font = request.POST['font']
+    sticker_slab.background = wallpaper
     sticker_slab.font = font
     sticker_slab.save()
     return HttpResponseRedirect(reverse('slab:show_slab', kwargs={'slab_id':slab_id}))
