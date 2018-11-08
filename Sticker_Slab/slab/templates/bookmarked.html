@@ -1,9 +1,12 @@
+<!-- A LIST OF SLABS CREATED BY OTHER PEOPLE SAVED TO THE USER'S PROFILE FOR EASY REFERENCE -->
 {% extends 'base.html' %}
 {% block content %}
 <h1>Bookmarks <i class="material-icons">book</i></h1>
+<!-- BOOKMARK CONTAINER -->
 <div class = "main_div">
     <div class="white_list_box single_centered_box">
         <ul class="collection with-header">
+            <!-- CAN VIEW OR REMOVE BOOKMARKED SLABS -->
             {% for slab in slabs %}
             <li class="collection-item">
                 <a href="{% url 'slab:show_slab' slab.id  %}">{{slab.name}}</a>
@@ -14,6 +17,7 @@
         </ul>
     </div>
 </div>
+<!-- BACK TO PROFILE -->
 <div class="footer_buttons">
     <a class="waves-effect waves-light btn blue" href="{% url 'slab:profile' %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Profile</a>
 </div>

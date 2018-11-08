@@ -1,9 +1,12 @@
+<!-- LETS USERS SEE ALL PUBLIC SLABS WHETHER SIGNED IN OR NOT -->
 {% extends 'base.html' %}
 {% block content %}
 <h1>Search Slabs</h1>
 <div class="main_div">
   <div id="search_area" name="search_area">
+    <!-- SEARCH BAR -->
     <input type="text" id="search_bar" name="search_bar" placeholder="🔍Search Slabs" title="Type in a name">
+    <!-- SEARCH RESULTS -->
     <table id="search_results" name="search_results" class="black_box">
       <tr class="header">
         <th><h4>Slab Name</h4></th>
@@ -26,6 +29,7 @@
     </table>
   </div>
   <br>
+  <!-- ALL PUBLIC SLABS -->
   <div id="all_public_slabs" name="all_public_slabs" class="black_box">
     <center>
       <h4>All Public Slabs</h4>
@@ -36,6 +40,7 @@
     </center>
   </div>
 </div>
+<!-- JAVASCRIPT FOR SEARCH -->
 <script type="text/javascript">
   // SEARCH BAR FUNCTIONALITY
   let search_bar = document.querySelector('#search_bar')

@@ -1,12 +1,16 @@
+<!-- LANDING PAGE FOR STICKER SLAB -->
 {% extends 'base.html' %}
 {% block content %}
+<!-- WEBSITE TITLE -->
 <h1 id="site_title" name="site_title">
     <center>
     {% load static %}
     Sticker <img id="logo" src="{% static 'slab/images/logo.png' %}" width="25" height="30" class="d-inline-block align-top" alt="Sticker Slab">Slab
     </center>
 </h1>
+<!-- GETTING STARTED INFO -->
 <div class = "main_div">
+    <!-- DIRECTS USER TO SIGNIN/UP -->
     <div id="loggedin_account" name="loggedin_account" class="row">
         {% if user.is_authenticated %}
         <h5>
@@ -21,6 +25,7 @@
         </h5>
         {% endif %}
     </div>
+    <!-- PROVIDES USER WITH INFO ON STICKER SLAB -->
     <div id="landing_card" name="landing_card" class="card">
         <div class="card-image">
             <img src="{% static 'slab/images/sticker_slab.jpg' %}">

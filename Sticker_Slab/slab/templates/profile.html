@@ -1,7 +1,10 @@
+<!-- LETS USER VIEW THEIR SLABS, MAKE MORE AND EDIT THEIR PROFILE -->
 {% extends 'base.html' %}
 {% block content %}
 <h1>{{user.username}}</h1>
+<!-- SLAB LINKS AND CREATION AREA -->
 <div class="container">
+    <!-- CREATE A NEW SLAB -->
     <div id="create_new" name="create_new" class="item col s12 m6 black_box">
         <span class="flow-text">
             <form action="{% url 'slab:create_slab' %}" method="post">
@@ -39,6 +42,7 @@
             </form>
         </span>
     </div>
+    <!-- SHOWS LIST OF USER CREATED SLABS -->
     <div id="my_slabs" name="my_slabs" class="item col s12 m6 white_list_box">
         <ul class="collection with-header">
             <li class="collection-header"><h4>My Slabs:</h4></li>
@@ -48,6 +52,7 @@
         </ul>
     </div>
 </div>
+<!-- DROPDOWN MENU WITH USER SETTINGS -->
 <div id="profile_settings" name="profile_settings" class="footer_buttons">
     <p id="demo"></p>
     <footer>
@@ -63,13 +68,15 @@
         </ul>
     </footer>
 </div>
-<!-- Materialize Dropdown CDN -->
+<!-- DROPDOWN MENU JAVASCRIPT -->
 <script type="text/javascript">
+    // MATERIALIZE DROPDOWN CDN
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems, {});
     });
 
+    // ALERT TO DOUBLE CHECK DELETING ACCOUNT
     function deleteAccount() {
         var txt;
         var r = confirm("Are you sure you want to delete your account? Once deleted the account can never be recovered.");

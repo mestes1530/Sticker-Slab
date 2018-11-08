@@ -1,11 +1,16 @@
+<!-- WEBPAGE THAT SHOWS THE TEXT OR IMAGE CONTENT OF SELECTED STICKER -->
 {% extends 'base.html' %}
 {% block content %}
+<!-- STICKER NAME -->
 <h1>{{sticker.name}}</h1>
+<!-- SHOW STICKER CONTENT AND INFO -->
 <div class="main_div">
+    <!-- NAME OF STICKER'S CREATOR AND THE SLAB STICKER WAS PUT ON -->
     <div id="sticker_header" name="sticker_header">
         <h5>Posted by {{sticker.slab.user.username}} onto {{sticker.slab.name}}</h5>
     </div>
-    <div id="show_text" name="show_text">
+    <!-- DISPLAYS TEXT OR IMAGE OR LOADS URL IF LINK -->
+    <div id="show_content" name="show_content">
             {% if sticker.is_text %}
                 <p>{{sticker.text}}</p>
             {% elif sticker.is_link %}
@@ -17,6 +22,7 @@
     <br>
     <br>
 </div>
+<!-- BACK TO PROFILE -->
 <div class="footer_buttons">
     <a class="waves-effect waves-light btn blue" href="{% url 'slab:show_slab' sticker.slab.id %}"><i class="material-icons">subdirectory_arrow_left</i> Back to Slab</a>
 </div>

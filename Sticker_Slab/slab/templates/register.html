@@ -1,9 +1,11 @@
+<!-- ALLOWS THE USER TO CREATE OR SIGN INTO AN ACCOUNT -->
 {% extends 'base.html' %}
 {% block content %}
 <h1>Sign Up/In</h1>
+<!-- SIGNIN/UP AREA -->
 <div class="main_div">
     <div id="login_area" name="login_area" class="row black_box">
-        <!-- Where New Users Create Account -->
+        <!-- NEW USERS CAN CREATE AN ACCOUNT -->
         <div class="grid-example col s12 m6">
             <span class="flow-text">
                 <form action="{% url 'slab:signup_user' %}" method="post">
@@ -50,7 +52,7 @@
                 </form>
             </span>
         </div>
-        <!-- Returning Users Sign Into Their Accounts -->
+        <!-- RETURNING USERS LOG INTO THEIR ACCOUNTS -->
         <div class="grid-example col s12 m6">
             <span class="flow-text">
                 <form action="{% url 'slab:signin_user' %}" method="post">
