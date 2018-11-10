@@ -18,7 +18,7 @@
                             <td><font>Slab Name:</font></td>
                             <td>
                                 <div class="input-field col s6">
-                                    <input id="slab_name" name="slab_name" type="text" class="validate">
+                                    <input id="slab_name" name="slab_name" type="text" class="validate" required>
                                     <label for="slab_name">Slab Name</label>
                                 </div>
                             </td>
@@ -61,7 +61,6 @@
         <ul id='dropdown1' class='dropdown-content'>
             <li><a href="{% url 'slab:bookmarked' %}" class="blue-text"><i class="material-icons">book</i> Bookmarks</a></li>
             <li><a href="{% url 'slab:switch_users' %}" class="blue-text"><i class="material-icons">loop</i> Switch User</a></li>
-            <li><a href="#!" class="blue-text"><i class="material-icons">border_color</i> Edit User</a></li>
             <li><a href="#delete_profile_modal" class="red-text modal-trigger"><i class="material-icons">delete_forever</i> Delete User</a></li>
             <li class="divider" tabindex="-1" class = "blue-text"></li>
             <li><a href="#!" class="blue-text"><i class="material-icons">expand_more</i> Close Settings</a></li>
@@ -86,13 +85,11 @@
         var elems = document.querySelectorAll('.dropdown-trigger');
         var instances = M.Dropdown.init(elems, {});
     });
-
     // MATERALIZE MODAL
     document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
         var instances = M.Modal.init(elems, {});
     });
-
     // ALERT TO DOUBLE CHECK DELETING ACCOUNT
     function deleteAccount() {
         var txt;

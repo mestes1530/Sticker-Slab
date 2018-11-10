@@ -3,6 +3,7 @@
 {% block content %}
 <h1>Search Slabs</h1>
 <div class="main_div">
+  <!-- SEARCH AREA -->
   <div id="search_area" name="search_area">
     <!-- SEARCH BAR -->
     <input type="text" id="search_bar" name="search_bar" placeholder="🔍Search Slabs" title="Type in a name">
@@ -32,13 +33,15 @@
   <!-- ALL PUBLIC SLABS -->
   <div id="all_public_slabs" name="all_public_slabs" class="black_box">
     <center>
-      <h4>All Public Slabs</h4>
+      <h4 style="text-shadow: 2px 2px DeepSkyBlue;">All Public Slabs</h4>
       <hr> |
       {% for slab in slabs %}
       <a href="{% url 'slab:show_slab' slab.id %}"> {{slab.name}}</a> |
       {% endfor %}
     </center>
   </div>
+  <br>
+  <br>
 </div>
 <!-- JAVASCRIPT FOR SEARCH -->
 <script type="text/javascript">

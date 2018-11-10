@@ -34,9 +34,13 @@ def switch_users(request):
     return render(request, 'register.html', {})
 
 def delete_user(request):
-    UserSocialAuth.objects.filter(user=request.user).delete()
-    User.objects.filter(pk=request.user.pk).update(is_active=False, email=None)
-    return HttpResponseRedirect(reverse('django.contrib.auth.views.logout'))
+    user = request.user
+    for slab in user.slab_set.all():
+        for sticker in slab.sticker_set.all():
+            sticker.delete()
+        slab.delete()
+    user.delete()
+    return HttpResponseRedirect(reverse('slab:index'))
 
 def create_slab(request):
     slab_creator = request.user

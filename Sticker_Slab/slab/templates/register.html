@@ -16,35 +16,26 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><font>Username:</font></td>
+                                <td id="attempted_username">Username:</td>
                                 <td>
                                     <div class="input-field col s6">
-                                        <input id="create_username" name="create_username" type="text" class="validate">
+                                        <input id="create_username" name="create_username" type="text" pattern="[0-9a-zA-Z@.+-_]" class="validate" required>
                                         <label for="create_username">Username</label>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><font>Email:</font></td>
+                                <td>Password:</td>
                                 <td>
                                     <div class="input-field col s6">
-                                        <input id="create_email" name="create_email" type="email" class="validate">
-                                        <label for="create_email">Email</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><font>Password:</font></td>
-                                <td>
-                                    <div class="input-field col s6">
-                                        <input id="create_password" name="create_password" type="password" class="validate">
+                                        <input id="create_password" name="create_password" type="password" class="validate" required>
                                         <label for="create_password">Password</label>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><button class="btn btn-primary green" type="submit">Sign up</button></td>
+                                <td><button id="sign_up" class="btn btn-primary green" type="submit">Sign up</button></td>
                                 <td></td>
                             </tr>
                         </tbody>
@@ -66,7 +57,7 @@
                                 <td><font>Username:</font></td>
                                 <td>
                                     <div class="input-field col s6">
-                                        <input id="check_username" name="check_username" type="text" class="validate">
+                                        <input id="check_username" name="check_username" type="text" class="validate" required>
                                         <label for="check_username">Username</label>
                                     </div>
                                 </td>
@@ -75,15 +66,9 @@
                                 <td><font>Password:</font></td>
                                 <td>
                                     <div class="input-field col s6">
-                                        <input id="check_password" name="check_password" type="password" class="validate">
+                                        <input id="check_password" name="check_password" type="password" class="validate" required>
                                         <label for="check_password">Password</label>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <font style="color:lime;">Forgot your password? Click <a href="#">here</a> to have a reset password sent to your email.</font>
-                                    <a href="#"><i class="material-icons">email</i><i class="material-icons">send</i></a>
                                 </td>
                             </tr>
                             <tr>
@@ -96,6 +81,7 @@
                 </form>
             </span>
         </div>
+        <center><span style="color:white;">*Usernames must only contain letters, numbers and (@ . + - _) characters.</span></center>
     </div>
     <br>
     <br>
