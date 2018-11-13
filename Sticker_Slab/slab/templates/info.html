@@ -1,26 +1,53 @@
+<!-- OFFERS HELP, INFO AND LINK TO THE CODE USED FOR STICKER SLAB -->
 {% extends 'base.html' %}
 {% block content %}
 <h1>Info</h1>
+<!-- COLLAPSIBLE INFO BOX -->
 <div class="main_div">
-  <ul class="collapsible expandable white_list_box">
+  <ul id="settings_box" name="settings_box" class="collapsible white_list_box">
+    <!-- STEP BY STEP GET STARTED GUIDE -->
     <li>
-      <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="material-icons">filter_1</i>Get Started</div>
+      <div class="collapsible-body">
+        <h5>Step By Step Guide For Sticker Slab</h5>
+        <hr>
+        <span>1.) Create an account, you can create a Sticker Slab account by clicking <a style="color:lime;" href="{% url 'slab:register' %}">here</a>. A Sticker Slab account lets user's save slabs by bookmarking them as well as create their own Sticker Slabs.</span><br>
+        <br>
+        <span>2.) Checkout all the created public slabs for inspiration by clicking on the <a style="color:lime;" href="{% url 'slab:browse' %}">Browse</a> tab. Use the search bar to find a specific slab and the bookmark button on the bottom to save your favorite slabs.</span><br>
+        <br>
+        <span>3.) Customize your own slabs by adding text, link and image stickers to share content on them. Since there is no feed, it is up to you update your slab with new stickers and delete old stickers you think they are just taking up space.</span><br>
+        <br>
+        <span>4.) Copy one of your slab's links by pressing the "Edit" tab at the bottom of the slab then the button labeled "Copy Link". You can then share your slab's link with your friends so they can click on all the stickers to see the slab's content.</span>
+      </div>
     </li>
+    <!-- INFO ON STICKER SLAB AND ITS CREATOR -->
     <li>
-      <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="material-icons">info_outline</i>Website Info</div>
+      <div class="collapsible-body">
+        <h5>About Sticker Slab</h5>
+        <hr>
+        <span>Sticker Slab is a simple social media website that works to strip away the announces of other popular platforms. No feed forcing content in your face, no algorithm analysing your every click to determine the most effective advertisement to show you, and no creepy cyborg selling your data to corporations; just simply sticking post to digital slabs to share with whoever.</span><hr>
+        <span>Sticker Slab is a capstone project coded by <a style="color:lime;" href="https://github.com/mestes1530">Mitchell Estes</a> while participating in <a style="color:lime;" href="https://pdxcodeguild.com/">PDX Code Guild</a>'s Full Stack Bootcamp.</span><br>
+        <span style="color:white">11/12/2018</span>
+      </div>
     </li>
+    <!-- LINK TO THE STICKER SLAB GITHUB -->
     <li>
-      <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      <div class="collapsible-header"><i class="material-icons">code</i>Source Code</div>
+      <div class="collapsible-body">
+        <h5>Get The Code With This GitHub Link</h5>
+        <hr>
+        <span>Sticker Source is an open source social media web application built using a Django framework. You can get a copy of the source code for your own use by clicking the button that links to the Sticker Slab GitHub account.</span>
+        <hr><center><a class="waves-effect waves-light btn-small center green" href="https://github.com/mestes1530/Sticker-Slab">GitHub</a></center>
+      </div>
     </li>
   </ul>
 </div>
 <script type="text/javascript">
+  // MATERIALIZE COLLAPSIBLE BOX
   document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.collapsible.expandable');
-    var instances = M.Collapsible.init(elems, {accordion: false});
+    var elems = document.querySelectorAll('.collapsible');
+    var instances = M.Collapsible.init(elems, {});
   });
 </script>
 {% endblock %}

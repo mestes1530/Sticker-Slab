@@ -10,9 +10,8 @@ def index(request):
 
 def signup_user(request):
     create_username = request.POST['create_username']
-    create_email = request.POST['create_email']
     create_password = request.POST['create_password']
-    user = User.objects.create_user(username=create_username, email=create_email, password=create_password)
+    user = User.objects.create_user(username=create_username, password=create_password)
     login(request, user)
     return HttpResponseRedirect(reverse('slab:index'))
 
