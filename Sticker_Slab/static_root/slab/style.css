@@ -1,0 +1,167 @@
+body {
+    background: white url("images/background_default.jpg") no-repeat center center fixed;
+    background-size: cover;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Fredoka One', cursive;
+}
+h1 {
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px Lime;
+    padding-left: 2%;
+}
+h4 {
+    text-decoration: underline;
+}
+.main_div {
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.nav-wrapper {
+    background: linear-gradient(to right, Lime, Green);
+}
+#site_title {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-right: 2%;
+}
+#site_name {
+    padding-left: 1%;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 2px 2px blue;
+    flex-shrink: 1px;
+}
+.black_box {
+    padding: 1%;
+    border-style: outset;
+    color: lime;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.white_list_box {
+    border-style: outset;
+    color: DeepSkyBlue;
+    text-shadow: 1px 1px black;
+    background-color: rgba(230, 230, 230, 0.7);
+}
+.modal {
+    color: DeepSkyBlue;
+    border-style: solid;
+    border-color: lime;
+}
+table {
+    width: 40%;
+    padding: 5%;
+    border: 3px solid black;
+}
+th {
+    text-shadow: 2px 2px DeepSkyBlue;
+    padding: 1%;
+}
+td {
+    color: DeepSkyBlue;
+    text-shadow: 1px 1px black;
+}
+.container {
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: space-around;
+    justify-content: space-evenly;
+}
+.item {
+  display: block;
+  width: 400px;
+}
+i.icon-blue {
+    color: DeepSkyBlue;
+}
+i.icon-red {
+    color: red;
+}
+.card-title {
+    background-color: rgba(0, 0, 250, 0.7);
+    color: white;
+    text-shadow: 2px 2px Lime;
+    width: 100%;
+}
+.footer_buttons {
+    position: fixed;
+    bottom: 0px;
+    margin-left: 1%;
+    padding-left: 1%;
+}
+#loggedin_account {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
+    border-style: outset;
+    background-color: rgba(127, 255, 0, 0.7);
+    color: white;
+    text-shadow: 2px 2px black;
+}
+#landing_card {
+    margin-left: 10%;
+    margin-right: 10%;
+    border-style: outset;
+}
+#slab_header {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-style: outset;
+}
+#slab_sticker_area {
+    width: 100%;
+    height: 650px;
+    padding: 1%;
+}
+#sticker_header {
+    padding-left: 2%;
+    color: lime;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+#show_content {
+    padding: 1%;
+    border-style: outset;
+    color: black;
+    text-shadow: 1px 1px DeepSkyBlue;
+    background-color: rgba(230, 230, 230, 0.7);
+}
+#display_image {
+    width: 100%;
+}
+#search_area {
+    width: 100%;
+}
+#search_bar {
+    padding-left: 1%;
+    background-color: rgba(230, 230, 230, 0.7);
+    border-style: outset;
+    color: black;
+    text-shadow: 1px 1px DeepSkyBlue;
+    width: 98.5%;
+}
+#search_results {
+    border-style: outset;
+    width: 100%;
+    text-align: center;
+}
+.search_text {
+    color: lime;
+    padding-left: 1%;
+}
+#settings_box {
+    margin-left: 10%;
+    margin-right: 10%;
+    border-style: outset;
+}
