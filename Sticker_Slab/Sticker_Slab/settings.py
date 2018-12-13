@@ -25,7 +25,9 @@ SECRET_KEY = '@%2^-#vu-7l*fs1irr=r_9uyojuo0(e8va*!uh+zqc#9xt(q2_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mitchell.pdxstudents.com'
+]
 
 
 # Application definition
@@ -123,3 +125,8 @@ STATIC_URL = '/static/'
 # Specify save location for uploaded media files
 MEDIA_URL = '/uploaded_files/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'slab', 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
