@@ -24,7 +24,7 @@ SECRET_KEY = '@%2^-#vu-7l*fs1irr=r_9uyojuo0(e8va*!uh+zqc#9xt(q2_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # MIGHT HAVE HAD THIS TURNED ON WHEN DEPLOYED LAST
-#DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'mitchell.pdxstudents.com'
